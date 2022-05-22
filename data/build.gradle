@@ -6,7 +6,6 @@ plugins {
 }
 
 apply from:'../shared_dependencies.gradle'
-
 android {
     compileSdk 32
 
@@ -34,5 +33,16 @@ android {
 }
 
 dependencies {
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
 
+    // okhttp
+    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
+
+    // room
+    implementation "androidx.room:room-runtime:2.4.2"
+    implementation "androidx.room:room-ktx:2.4.2"
+    implementation "androidx.room:room-testing:2.4.2"
 }
