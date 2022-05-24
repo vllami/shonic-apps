@@ -10,11 +10,22 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignUpActivity : AppCompatActivity() {
-    private lateinit var binding : ActivitySignUpBinding
+    private lateinit var binding: ActivitySignUpBinding
     private val viewModel by viewModels<SignUpViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setActionBar()
+    }
+
+
+    private fun setActionBar() {
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.title = "Daftar"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 }

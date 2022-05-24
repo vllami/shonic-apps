@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Shonic</string>
+    <string name="register_email_hint">Email</string>
+    <string name="register_next">Lanjut</string>
+    <string name="register_masuk">Masuk</string>
 </resources>
