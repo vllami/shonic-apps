@@ -1,4 +1,4 @@
-package com.hafidh.data
+package com.synrgy.data
 
 import org.junit.Test
 

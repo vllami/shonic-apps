@@ -1,4 +1,4 @@
-package com.hafidh.domain
+package com.synrgy.domain
 
 import org.junit.Test
 

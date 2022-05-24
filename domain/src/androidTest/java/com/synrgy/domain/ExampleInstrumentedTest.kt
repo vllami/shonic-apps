@@ -1,4 +1,4 @@
-package com.hafidh.domain
+package com.synrgy.domain
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
