@@ -17,20 +17,24 @@
         android:theme="@style/Theme.Shonic"
         tools:targetApi="31">
         <activity
+            android:name=".auth.verification.VerificationActivity"
+            android:exported="true" />
+        <activity
             android:name=".auth.login.LogInActivity"
             android:exported="false" />
         <activity
             android:name=".auth.signup.SignUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SplashScreenActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SplashScreenActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
