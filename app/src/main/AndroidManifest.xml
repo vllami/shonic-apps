@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Shonic"
         tools:targetApi="31">
         <activity
+            android:name=".auth.verification.VerificationActivity"
+            android:exported="true" />
+        <activity
             android:name=".auth.login.LogInActivity"
             android:exported="false" />
         <activity
@@ -30,8 +33,7 @@
         </activity>
         <activity
             android:name=".SplashScreenActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>
