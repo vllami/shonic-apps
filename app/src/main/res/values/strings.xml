@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Shonic</string>
+
+    // register string resources
+    <string name="register_email_hint">Email</string>
+    <string name="register_next">Lanjut</string>
+    <string name="register_masuk">Masuk</string>
+    <string name="register_or">atau</string>
+    <string name="register_google">Masuk dengan Google</string>
+    <string name="register_term_of_use">"Dengan mendaftar, saya menyetujui Syarat dan "</string>
+    <string name="register_privacy_policy">Ketentuan serta Kebijakan Privasi</string>
+    <string name="register_daftar">Daftar</string>
+    <string name="register_verification">Verifikasi Akun</string>
+
+    // verification string resources
+    <string name="verification">Verifikasi</string>
+    <string name="verification_description">Kode berhasil dikirim melalui email \n%1$s, periksa dan masukan kode \ndisini untuk dapat membuat akun baru</string>
+
 </resources>
