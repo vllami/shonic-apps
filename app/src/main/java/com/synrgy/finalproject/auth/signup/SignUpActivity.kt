@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
+import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import com.synrgy.finalproject.R
 import com.synrgy.finalproject.auth.login.LogInViewModel
@@ -27,6 +28,14 @@ class SignUpActivity : AppCompatActivity() {
 
         binding.toolbar.setNavigationOnClickListener {
             finish()
+        }
+
+        binding.etRegisterEmail.setOnEditorActionListener { _, editorInfo, _ ->
+            when (editorInfo) {
+                EditorInfo.IME_ACTION_DONE -> binding.etRegisterEmail.clearFocus()
+            }
+            false
+
         }
 
         binding.btnRegisterEmail.setOnClickListener {
