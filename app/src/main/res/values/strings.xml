@@ -13,5 +13,7 @@
     <string name="register_verification">Verifikasi Akun</string>
 
     // verification string resources
+    <string name="verification">Verifikasi</string>
     <string name="verification_description">Kode berhasil dikirim melalui email \n%1$s, periksa dan masukan kode \ndisini untuk dapat membuat akun baru</string>
+
 </resources>
