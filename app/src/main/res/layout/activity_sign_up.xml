@@ -32,7 +32,7 @@
             <TextView
                 android:id="@+id/tv_register_headline"
                 style="@style/textStyleSmall"
-                android:layout_width="45dp"
+                android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginEnd="16dp"
                 android:text="@string/register_masuk"
