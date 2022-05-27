@@ -10,10 +10,21 @@
     <string name="register_term_of_use">"Dengan mendaftar, saya menyetujui Syarat dan "</string>
     <string name="register_privacy_policy">Ketentuan serta Kebijakan Privasi</string>
     <string name="register_daftar">Daftar</string>
+    <string name="register_password">Password</string>
+    <string name="register_confirm_password">Konfirmasi Password</string>
     <string name="register_verification">Verifikasi Akun</string>
+    <string name="register_complete">Lengkapi Pendaftaran</string>
+    <string name="register_completed">Selesai</string>
 
     // verification string resources
     <string name="verification">Verifikasi</string>
     <string name="verification_description">Kode berhasil dikirim melalui email \n%1$s, periksa dan masukan kode \ndisini untuk dapat membuat akun baru</string>
+    <string name="register_full_name">Nama Lengkap</string>
+
+    // error string resources
+    <string name="error_field_required">Nama lengkap atau password tidak boleh kosong</string>
+    <string name="error_password_not_match">Password tidak sama</string>
+    <string name="verification_resend_button">Mohon tunggu dalam %1$d detik untuk kirim ulang</string>
+
 
 </resources>
