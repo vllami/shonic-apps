@@ -9,7 +9,6 @@ import android.text.style.ForegroundColorSpan
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import com.synrgy.finalproject.R
-import com.synrgy.finalproject.auth.login.LogInViewModel
 import com.synrgy.finalproject.auth.verification.VerificationActivity
 import com.synrgy.finalproject.databinding.ActivitySignUpBinding
 import com.synrgy.finalproject.utils.setActionBarTitle
@@ -55,7 +54,7 @@ class SignUpActivity : AppCompatActivity() {
             val spanTerm = SpannableString(term)
             spanTerm.setSpan(
                 ForegroundColorSpan(
-                    resources.getColor(R.color.primary_button, null)
+                    resources.getColor(R.color.primary, null)
                 ),
                 34,
                 term.length - 1,
@@ -67,7 +66,7 @@ class SignUpActivity : AppCompatActivity() {
             val spanPrivacy = SpannableString(privacy)
             spanPrivacy.setSpan(
                 ForegroundColorSpan(
-                    resources.getColor(R.color.primary_button, null)
+                    resources.getColor(R.color.primary, null)
                 ),
                 0,
                 9,
@@ -75,7 +74,7 @@ class SignUpActivity : AppCompatActivity() {
             )
             spanPrivacy.setSpan(
                 ForegroundColorSpan(
-                    resources.getColor(R.color.primary_button, null)
+                    resources.getColor(R.color.primary, null)
                 ),
                 16,
                 privacy.length,

@@ -32,7 +32,7 @@ class VerificationActivity : AppCompatActivity() {
         val span = SpannableString(description)
         span.setSpan(
             ForegroundColorSpan(
-                resources.getColor(R.color.primary_button, null)
+                resources.getColor(R.color.primary, null)
             ),
             description.indexOf(Constants.DUMMY_EMAIL),
             description.indexOf(Constants.DUMMY_EMAIL) + Constants.DUMMY_EMAIL.length,
