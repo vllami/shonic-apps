@@ -24,6 +24,7 @@
     // error string resources
     <string name="error_field_required">Nama lengkap atau password tidak boleh kosong</string>
     <string name="error_password_not_match">Password tidak sama</string>
+    <string name="verification_resend_button">Mohon tunggu dalam %1$d detik untuk kirim ulang</string>
 
 
 </resources>
