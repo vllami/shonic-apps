@@ -12,7 +12,9 @@ import com.synrgy.finalproject.auth.signup.CompleteRegisterActivity
 import com.synrgy.finalproject.databinding.ActivityVerificationBinding
 import com.synrgy.finalproject.utils.Constants
 import com.synrgy.finalproject.utils.setActionBarTitle
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class VerificationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityVerificationBinding
     private lateinit var countDownTimer: CountDownTimer

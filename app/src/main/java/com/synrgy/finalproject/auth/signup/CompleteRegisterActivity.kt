@@ -11,7 +11,9 @@ import com.synrgy.finalproject.auth.login.LogInActivity
 import com.synrgy.finalproject.databinding.ActivityCompleteRegisterBinding
 import com.synrgy.finalproject.utils.BaseMessage
 import com.synrgy.finalproject.utils.setActionBarTitle
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CompleteRegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCompleteRegisterBinding
     override fun onCreate(savedInstanceState: Bundle?) {
