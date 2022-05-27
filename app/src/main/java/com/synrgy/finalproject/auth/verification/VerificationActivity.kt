@@ -2,10 +2,10 @@ package com.synrgy.finalproject.auth.verification
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.finalproject.R
 import com.synrgy.finalproject.auth.signup.CompleteRegisterActivity
@@ -15,6 +15,7 @@ import com.synrgy.finalproject.utils.setActionBarTitle
 
 class VerificationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityVerificationBinding
+    private lateinit var countDownTimer: CountDownTimer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVerificationBinding.inflate(layoutInflater)
@@ -24,6 +25,7 @@ class VerificationActivity : AppCompatActivity() {
         setDescription(getString(R.string.verification_description, Constants.DUMMY_EMAIL))
         onNextButtonClicked()
         onToolbarNavigationClicked()
+        countdownTimer()
     }
 
     private fun setDescription(description: String) {
@@ -40,7 +42,7 @@ class VerificationActivity : AppCompatActivity() {
     }
 
     private fun onNextButtonClicked() {
-        binding.btnRegisterEmail.setOnClickListener {
+        binding.btnRegisterVerification.setOnClickListener {
             Intent(this, CompleteRegisterActivity::class.java).apply {
                 startActivity(this)
             }
@@ -51,5 +53,18 @@ class VerificationActivity : AppCompatActivity() {
         binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
+    }
+
+    private fun countdownTimer() {
+        countDownTimer = object : CountDownTimer(60000, 1000) {
+            override fun onFinish() {
+                binding.tvVerificationDescriptionCountdown.text = ""
+            }
+
+            override fun onTick(millisUntilFinished: Long) {
+                binding.tvVerificationDescriptionCountdown.text =
+                    getString(R.string.verification_resend_button, millisUntilFinished / 1000)
+            }
+        }.start()
     }
 }

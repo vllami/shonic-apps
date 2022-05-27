@@ -20,7 +20,8 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".auth.verification.VerificationActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".auth.login.LogInActivity"
             android:exported="false" />
