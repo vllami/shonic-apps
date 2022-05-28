@@ -22,7 +22,7 @@ object BaseMessage {
         Snackbar.make(view, message, Snackbar.LENGTH_SHORT).apply {
             context.apply {
                 setTextColor(getColor(R.color.white))
-                setBackgroundTint(getColor(R.color.purple_200))
+                setBackgroundTint(getColor(R.color.primary))
             }
             animationMode = BaseTransientBottomBar.ANIMATION_MODE_SLIDE
             anchorView = view
@@ -34,7 +34,7 @@ object BaseMessage {
         Snackbar.make(view, message, Snackbar.LENGTH_SHORT).apply {
             context.apply {
                 setTextColor(getColor(R.color.white))
-                setBackgroundTint(getColor(R.color.purple_200))
+                setBackgroundTint(getColor(R.color.primary))
             }
             animationMode = BaseTransientBottomBar.ANIMATION_MODE_SLIDE
             anchorView = view
@@ -46,7 +46,7 @@ object BaseMessage {
         Snackbar.make(view, message, Snackbar.LENGTH_LONG).apply {
             context.apply {
                 setTextColor(getColor(R.color.white))
-                setBackgroundTint(getColor(R.color.purple_200))
+                setBackgroundTint(getColor(R.color.primary))
             }
             animationMode = BaseTransientBottomBar.ANIMATION_MODE_SLIDE
             anchorView = view
@@ -58,7 +58,7 @@ object BaseMessage {
         Snackbar.make(view, message, Snackbar.LENGTH_LONG).apply {
             context.apply {
                 setTextColor(getColor(R.color.white))
-                setBackgroundTint(getColor(R.color.purple_200))
+                setBackgroundTint(getColor(R.color.primary))
             }
             animationMode = BaseTransientBottomBar.ANIMATION_MODE_SLIDE
             anchorView = view
