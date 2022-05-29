@@ -1,4 +1,4 @@
-package com.synrgy.finalproject.auth.login
+package com.synrgy.finalproject.ui.auth.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

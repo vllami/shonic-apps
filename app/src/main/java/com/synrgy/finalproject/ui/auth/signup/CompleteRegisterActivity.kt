@@ -1,4 +1,4 @@
-package com.synrgy.finalproject.auth.signup
+package com.synrgy.finalproject.ui.auth.signup
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.synrgy.finalproject.R
-import com.synrgy.finalproject.auth.login.LogInActivity
+import com.synrgy.finalproject.ui.auth.login.LogInActivity
 import com.synrgy.finalproject.databinding.ActivityCompleteRegisterBinding
 import com.synrgy.finalproject.utils.BaseMessage
 import com.synrgy.finalproject.utils.setActionBarTitle

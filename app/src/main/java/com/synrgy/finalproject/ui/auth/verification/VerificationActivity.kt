@@ -1,4 +1,4 @@
-package com.synrgy.finalproject.auth.verification
+package com.synrgy.finalproject.ui.auth.verification
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.finalproject.R
-import com.synrgy.finalproject.auth.signup.CompleteRegisterActivity
+import com.synrgy.finalproject.ui.auth.signup.CompleteRegisterActivity
 import com.synrgy.finalproject.databinding.ActivityVerificationBinding
 import com.synrgy.finalproject.utils.Constants
 import com.synrgy.finalproject.utils.setActionBarTitle

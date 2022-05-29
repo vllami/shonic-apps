@@ -1,4 +1,4 @@
-package com.synrgy.finalproject.auth.login
+package com.synrgy.finalproject.ui.auth.login
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,4 +1,4 @@
-package com.synrgy.finalproject.auth.signup
+package com.synrgy.finalproject.ui.auth.signup
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +9,7 @@ import android.text.style.ForegroundColorSpan
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import com.synrgy.finalproject.R
-import com.synrgy.finalproject.auth.verification.VerificationActivity
+import com.synrgy.finalproject.ui.auth.verification.VerificationActivity
 import com.synrgy.finalproject.databinding.ActivitySignUpBinding
 import com.synrgy.finalproject.utils.setActionBarTitle
 import dagger.hilt.android.AndroidEntryPoint
