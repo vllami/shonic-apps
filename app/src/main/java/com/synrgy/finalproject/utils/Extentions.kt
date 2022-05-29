@@ -13,10 +13,17 @@ fun AppCompatActivity.setActionBarTitle(
     if (title != null) {
         supportActionBar?.title = title
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     } else {
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 }
+
 fun ViewBinding.setButtonEnabled(enabled: Boolean) {
     root.isEnabled = enabled
 }

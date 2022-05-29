@@ -21,17 +21,10 @@ class CompleteRegisterActivity : AppCompatActivity() {
         binding = ActivityCompleteRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setActionBarTitle(binding.toolbar, getString(R.string.register_complete))
-        onToolbarNavigationClicked()
         clearFocus()
         onButtonClicked()
     }
 
-
-    private fun onToolbarNavigationClicked() {
-        binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }
-    }
 
     private fun clearFocus() {
         binding.etRegisterConfirmPassword.setOnEditorActionListener { _, editorInfo, _ ->

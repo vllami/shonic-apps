@@ -24,11 +24,6 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(binding.root)
         setActionBarTitle(binding.toolbar, getString(R.string.register_daftar))
         setTermAndPrivacy()
-
-        binding.toolbar.setNavigationOnClickListener {
-            finish()
-        }
-
         binding.etRegisterEmail.setOnEditorActionListener { _, editorInfo, _ ->
             when (editorInfo) {
                 EditorInfo.IME_ACTION_DONE -> binding.etRegisterEmail.clearFocus()
