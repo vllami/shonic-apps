@@ -1,10 +1,9 @@
-package com.synrgy.finalproject.auth.login
+package com.synrgy.finalproject.ui.auth.signup
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class LogInViewModel @Inject constructor(): ViewModel() {
-
+class SignUpViewModel @Inject constructor(): ViewModel() {
 }

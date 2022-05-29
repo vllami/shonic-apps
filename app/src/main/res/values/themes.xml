@@ -1,10 +1,33 @@
 <resources>
-    <style name="Theme.Shonic" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Shonic" parent="Theme.MaterialComponents.Light">
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/white</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <item name="android:windowLightStatusBar">?attr/colorOnPrimary</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
+        <item name="colorOnPrimary">@color/primary</item>
+        <item name="colorAccent">@color/primary</item>
+        <!-- No action bar. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Shonic.SplashScreen">
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <!-- Remove blank screen. -->
+        <item name="android:colorBackground">@color/primary</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+    <style name="Theme.Shonic.WhiteStatusBar">
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Shonic.PrimaryStatusBar">
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
     <style name= "Button.MaterialComponents.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton.Icon">
