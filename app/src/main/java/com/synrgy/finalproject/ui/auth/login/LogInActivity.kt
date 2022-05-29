@@ -1,9 +1,8 @@
 package com.synrgy.finalproject.ui.auth.login
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.synrgy.finalproject.R
+import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.finalproject.databinding.ActivityLogInBinding
 
 class LogInActivity : AppCompatActivity() {

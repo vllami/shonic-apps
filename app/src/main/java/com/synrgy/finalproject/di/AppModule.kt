@@ -22,9 +22,9 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideGlide(context: Context): RequestManager = Glide.with(context).setDefaultRequestOptions(
-        RequestOptions().diskCacheStrategy(DiskCacheStrategy.DATA)
-    )
-
+    fun provideGlide(context: Context): RequestManager =
+        Glide.with(context).setDefaultRequestOptions(
+            RequestOptions().diskCacheStrategy(DiskCacheStrategy.DATA)
+        )
 
 }
