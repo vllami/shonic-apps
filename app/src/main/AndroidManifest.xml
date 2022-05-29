@@ -15,20 +15,9 @@
         android:theme="@style/Theme.Shonic"
         tools:targetApi="31">
         <activity
-            android:name=".auth.signup.CompleteRegisterActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".auth.verification.VerificationActivity"
+            android:name=".ui.SplashScreenActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".auth.login.LogInActivity"
-            android:exported="false" />
-        <activity
-            android:name=".auth.signup.SignUpActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
+            android:theme="@style/Theme.Shonic.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,8 +25,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SplashScreenActivity"
-            android:exported="false" />
+            android:name=".ui.auth.signup.SignUpActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Shonic.WhiteStatusBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.auth.verification.VerificationActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Shonic.WhiteStatusBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.auth.signup.CompleteRegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Shonic.WhiteStatusBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.auth.login.LogInActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Shonic.WhiteStatusBar" />
     </application>
 
 </manifest>
