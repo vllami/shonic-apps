@@ -3,14 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidStudioProjects/shonic-apps/app/src/main/res/drawable/ic_visibility_off.xml" value="0.109" />
-        <entry key="..\:/AndroidStudioProjects/shonic-apps/app/src/main/res/drawable/rounded_bg_button.xml" value="0.109" />
-        <entry key="..\:/AndroidStudioProjects/shonic-apps/app/src/main/res/drawable/rounded_bg_button_unable.xml" value="0.109" />
-        <entry key="..\:/AndroidStudioProjects/shonic-apps/app/src/main/res/layout/activity_complete_register.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/shonic-apps/app/src/main/res/layout/activity_log_in.xml" value="0.25" />
-        <entry key="..\:/AndroidStudioProjects/shonic-apps/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
-        <entry key="..\:/AndroidStudioProjects/shonic-apps/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/shonic-apps/app/src/main/res/layout/activity_verification.xml" value="0.14719202898550723" />
         <entry key="..\:/Bootcamp/SYNRGY Academy/Main-Bootcamp/Final Project/Shonic/app/src/main/res/drawable/ic_launcher_background.xml" value="0.177" />
         <entry key="..\:/Bootcamp/SYNRGY Academy/Main-Bootcamp/Final Project/Shonic/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.177" />
         <entry key="..\:/Bootcamp/SYNRGY Academy/Main-Bootcamp/Final Project/Shonic/app/src/main/res/drawable/rounded_bg_button.xml" value="0.1" />
