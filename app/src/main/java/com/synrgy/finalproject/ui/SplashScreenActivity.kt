@@ -1,4 +1,4 @@
-package com.synrgy.finalproject
+package com.synrgy.finalproject.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
