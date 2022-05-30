@@ -1,30 +1,29 @@
 <resources>
     <string name="app_name">Shonic</string>
 
-    // register string resources
-    <string name="register_email_hint">Email</string>
-    <string name="register_next">Lanjut</string>
-    <string name="register_masuk">Masuk</string>
-    <string name="register_or">atau</string>
-    <string name="register_google">Masuk dengan Google</string>
-    <string name="register_term_of_use">"Dengan mendaftar, saya menyetujui Syarat dan "</string>
-    <string name="register_privacy_policy">Ketentuan serta Kebijakan Privasi</string>
-    <string name="register_daftar">Daftar</string>
-    <string name="register_password">Password</string>
-    <string name="register_confirm_password">Konfirmasi Password</string>
-    <string name="register_verification">Verifikasi Akun</string>
-    <string name="register_complete">Lengkapi Pendaftaran</string>
-    <string name="register_completed">Selesai</string>
+    <!-- Sign Up -->
+    <string name="sign_up_title">Daftar</string>
+    <string name="sign_up_text_button_log_in">Masuk</string>
+    <string name="sign_up_email_hint">Email</string>
+    <string name="sign_up_next_button">Lanjut</string>
+    <string name="sign_up_or">atau</string>
+    <string name="sign_up_google_log_in_button">Masuk dengan Google</string>
+    <string name="sign_up_term_of_use">"Dengan mendaftar, saya menyetujui Syarat dan "</string>
+    <string name="sign_up_privacy_policy">Ketentuan serta Kebijakan Privasi</string>
 
-    // verification string resources
-    <string name="verification">Verifikasi</string>
-    <string name="verification_description">Kode berhasil dikirim melalui email \n%1$s, periksa dan masukan kode \ndisini untuk dapat membuat akun baru</string>
-    <string name="register_full_name">Nama Lengkap</string>
+    <!-- Sign Up Verification -->
+    <string name="sign_up_verification_title">Verifikasi Akun</string>
+    <string name="sign_up_verification_description">Kode berhasil dikirim melalui email \n<b>%1$s</b>, periksa dan masukan kode \ndisini untuk dapat membuat akun baru.</string>
+    <string name="sign_up_verification_resend_button">Mohon tunggu dalam %1$d detik untuk kirim ulang</string>
 
-    // error string resources
+    <!-- Complete Sign Up -->
+    <string name="complete_sign_up_title">Lengkapi Pendaftaran</string>
+    <string name="complete_sign_up_full_name">Nama Lengkap</string>
+    <string name="complete_sign_up_password">Password</string>
+    <string name="complete_sign_up_confirm_password">Konfirmasi Password</string>
+    <string name="complete_sign_up_button">Selesai</string>
+
+    <!-- Error -->
     <string name="error_field_required">Nama lengkap atau password tidak boleh kosong</string>
     <string name="error_password_not_match">Password tidak sama</string>
-    <string name="verification_resend_button">Mohon tunggu dalam %1$d detik untuk kirim ulang</string>
-
-
 </resources>
