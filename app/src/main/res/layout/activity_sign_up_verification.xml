@@ -6,165 +6,358 @@
     android:layout_height="match_parent"
     tools:context=".ui.auth.verification.SignUpVerificationActivity">
 
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_sign_up_verification"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:elevation="5dp"
+        android:paddingStart="6dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/ll_sign_up_verification_btn_back"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/ripple_background"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/all_arrow_back_default" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+            android:layout_marginStart="7dp"
+            android:fontFamily="@font/opensans_bold"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingBottom="1dp"
+            android:text="@string/sign_up_verification_title"
+            android:textColor="@color/dark_gray"
+            android:textSize="16sp" />
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
-        android:id="@+id/tv_verification_description"
+        android:id="@+id/tv_sign_up_verification_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/opensans_regular"
-        android:letterSpacing="0.01"
-        android:textColor="#1C1C1E"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="1.5dp"
+        android:textColor="@color/dark_gray"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_sign_up_verification"
+        tools:text="Kode berhasil dikirim melalui email shonic@gmail.com, periksa dan masukan kode \ndisini untuk dapat membuat akun baru." />
 
-    <EditText
-        android:id="@+id/input1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="34dp"
-        android:background="@drawable/rounded_bg_input"
-        android:gravity="center"
-        android:imeOptions="actionNext"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        android:maxLength="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_verification_description"
-        tools:ignore="LabelFor">
-        <requestFocus />
-    </EditText>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:baselineAligned="false"
+        app:layout_constraintEnd_toEndOf="@+id/tv_sign_up_verification_description"
+        app:layout_constraintStart_toStartOf="@+id/tv_sign_up_verification_description"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sign_up_verification_description">
 
-    <EditText
-        android:id="@+id/input2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="34dp"
-        android:background="@drawable/rounded_bg_input"
-        android:gravity="center"
-        android:imeOptions="actionNext"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        android:maxLength="1"
-        app:layout_constraintStart_toEndOf="@id/input1"
-        app:layout_constraintTop_toBottomOf="@+id/tv_verification_description"
-        tools:ignore="LabelFor" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_sign_up_verification_input1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:padding="0dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:expandedHintEnabled="false"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-    <EditText
-        android:id="@+id/input3"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="34dp"
-        android:background="@drawable/rounded_bg_input"
-        android:gravity="center"
-        android:imeOptions="actionNext"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        android:maxLength="1"
-        app:layout_constraintStart_toEndOf="@id/input2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_verification_description"
-        tools:ignore="LabelFor" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_sign_up_verification_digit1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="true"
+                android:fontFamily="@font/opensans_medium"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:maxLength="1"
+                android:paddingStart="1dp"
+                android:paddingTop="11.5dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="13dp"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/dark_gray"
+                android:textColorHighlight="@color/white"
+                android:textSize="22sp" />
 
+            <requestFocus />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/input4"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="34dp"
-        android:background="@drawable/rounded_bg_input"
-        android:gravity="center"
-        android:imeOptions="actionNext"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        android:maxLength="1"
-        app:layout_constraintStart_toEndOf="@id/input3"
-        app:layout_constraintTop_toBottomOf="@+id/tv_verification_description"
-        tools:ignore="LabelFor" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_sign_up_verification_input2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:layout_weight="1"
+            android:padding="0dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:expandedHintEnabled="false"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-    <EditText
-        android:id="@+id/input5"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="34dp"
-        android:background="@drawable/rounded_bg_input"
-        android:gravity="center"
-        android:imeOptions="actionNext"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        android:maxLength="1"
-        app:layout_constraintStart_toEndOf="@id/input4"
-        app:layout_constraintTop_toBottomOf="@+id/tv_verification_description"
-        tools:ignore="LabelFor" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_sign_up_verification_digit2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="true"
+                android:fontFamily="@font/opensans_medium"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:maxLength="1"
+                android:paddingStart="1dp"
+                android:paddingTop="11.5dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="13dp"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/dark_gray"
+                android:textColorHighlight="@color/white"
+                android:textSize="22sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/input6"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="34dp"
-        android:background="@drawable/rounded_bg_input"
-        android:gravity="center"
-        android:imeOptions="actionDone"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        android:maxLength="1"
-        app:layout_constraintStart_toEndOf="@id/input5"
-        app:layout_constraintTop_toBottomOf="@+id/tv_verification_description"
-        tools:ignore="LabelFor" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_sign_up_verification_input3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:layout_weight="1"
+            android:padding="0dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:expandedHintEnabled="false"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_sign_up_verification_digit3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="true"
+                android:fontFamily="@font/opensans_medium"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:maxLength="1"
+                android:paddingStart="1dp"
+                android:paddingTop="11.5dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="13dp"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/dark_gray"
+                android:textColorHighlight="@color/white"
+                android:textSize="22sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_sign_up_verification_input4"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:layout_weight="1"
+            android:padding="0dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:expandedHintEnabled="false"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_sign_up_verification_digit4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="true"
+                android:fontFamily="@font/opensans_medium"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:maxLength="1"
+                android:paddingStart="1dp"
+                android:paddingTop="11.5dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="13dp"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/dark_gray"
+                android:textColorHighlight="@color/white"
+                android:textSize="22sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_sign_up_verification_input5"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:layout_weight="1"
+            android:padding="0dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:expandedHintEnabled="false"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_sign_up_verification_digit5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="true"
+                android:fontFamily="@font/opensans_medium"
+                android:gravity="center"
+                android:importantForAutofill="no"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:maxLength="1"
+                android:paddingStart="1dp"
+                android:paddingTop="11.5dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="13dp"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/dark_gray"
+                android:textColorHighlight="@color/white"
+                android:textSize="22sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_sign_up_verification_input6"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:padding="0dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:expandedHintEnabled="false"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_sign_up_verification_digit6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="true"
+                android:fontFamily="@font/opensans_medium"
+                android:gravity="center"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:maxLength="1"
+                android:paddingStart="1dp"
+                android:paddingTop="11.5dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="13dp"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/dark_gray"
+                android:textColorHighlight="@color/white"
+                android:textSize="22sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_verification_description_countdown"
-        android:layout_width="match_parent"
+        android:id="@+id/tv_sign_up_verification_description_countdown"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
-        android:fontFamily="@font/opensans_regular"
-        android:gravity="center"
+        android:fontFamily="@font/opensans_medium"
+        android:letterSpacing="0.01"
+        android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="#1C1C1E"
-        app:layout_constraintBottom_toTopOf="@id/btn_register_verification"
-        app:layout_constraintVertical_bias="0.8" />
+        android:textColor="@color/dark_gray"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/btn_sign_up_verification"
+        app:layout_constraintEnd_toEndOf="@+id/btn_sign_up_verification"
+        app:layout_constraintStart_toStartOf="@+id/btn_sign_up_verification"
+        tools:text="Mohon tunggu dalam 59 detik untuk kirim ulang" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_register_verification"
+        android:id="@+id/btn_sign_up_verification"
         style="@style/Button.MaterialComponents.Outlined"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/verification"
+        android:enabled="false"
+        android:fontFamily="@font/opensans_medium"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.01"
+        android:text="@string/sign_up_next_button"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
