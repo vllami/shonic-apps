@@ -13,6 +13,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/primary</item>
         <item name="android:windowLightStatusBar">false</item>
+        <!-- Navigation bar color. -->
+        <item name="android:navigationBarColor">@color/primary</item>
         <!-- Remove blank screen. -->
         <item name="android:colorBackground">@color/primary</item>
         <item name="android:windowDisablePreview">true</item>
@@ -22,6 +24,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
+        <!-- Navigation bar color. -->
+        <item name="android:navigationBarColor">@color/white</item>
     </style>
 
     <style name="Theme.Shonic.PrimaryStatusBar">
