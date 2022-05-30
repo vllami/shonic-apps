@@ -30,7 +30,7 @@ class SignUpActivity : AppCompatActivity() {
         override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
             binding.apply {
                 etSignUpEmail.text.toString().trim().apply {
-                    btnSignUpEmail.isEnabled = isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+                    btnSignUp.isEnabled = isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
                 }
             }
         }
@@ -47,10 +47,7 @@ class SignUpActivity : AppCompatActivity() {
             setContentView(root)
 
             llSignUpBtnBack.setOnClickListener {
-                Intent(Intent.ACTION_MAIN).apply {
-                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-
-                    addCategory(Intent.CATEGORY_HOME)
+                Intent(this@SignUpActivity, LogInActivity::class.java).apply {
                     startActivity(this)
                 }
             }
@@ -70,12 +67,12 @@ class SignUpActivity : AppCompatActivity() {
                     when (editorInfo) {
                         EditorInfo.IME_ACTION_DONE -> clearFocus()
                     }
-                    false
 
+                    false
                 }
             }
 
-            btnSignUpEmail.apply {
+            btnSignUp.apply {
                 setOnClickListener {
                     Intent(this@SignUpActivity, SignUpVerificationActivity::class.java).also {
                         it.apply {

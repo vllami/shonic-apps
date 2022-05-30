@@ -101,7 +101,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_sign_up_email"
+        android:id="@+id/btn_sign_up"
         style="@style/Button.MaterialComponents.Outlined"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -128,7 +128,7 @@
         android:background="@color/light_gray"
         app:layout_constraintBottom_toBottomOf="@+id/tv_sign_up_or"
         app:layout_constraintEnd_toStartOf="@+id/tv_sign_up_or"
-        app:layout_constraintStart_toStartOf="@+id/btn_sign_up_email"
+        app:layout_constraintStart_toStartOf="@+id/btn_sign_up"
         app:layout_constraintTop_toTopOf="@+id/tv_sign_up_or" />
 
     <View
@@ -139,7 +139,7 @@
         android:layout_marginTop="1dp"
         android:background="@color/light_gray"
         app:layout_constraintBottom_toBottomOf="@+id/tv_sign_up_or"
-        app:layout_constraintEnd_toEndOf="@+id/btn_sign_up_email"
+        app:layout_constraintEnd_toEndOf="@+id/btn_sign_up"
         app:layout_constraintStart_toEndOf="@+id/tv_sign_up_or"
         app:layout_constraintTop_toTopOf="@+id/tv_sign_up_or" />
 
