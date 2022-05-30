@@ -8,7 +8,7 @@ import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.finalproject.R
-import com.synrgy.finalproject.ui.auth.signup.CompleteRegisterActivity
+import com.synrgy.finalproject.ui.auth.signup.CompleteSignUpActivity
 import com.synrgy.finalproject.databinding.ActivityVerificationBinding
 import com.synrgy.finalproject.utils.Constants
 import com.synrgy.finalproject.utils.setActionBarTitle
@@ -45,7 +45,7 @@ class VerificationActivity : AppCompatActivity() {
 
     private fun onNextButtonClicked() {
         binding.btnRegisterVerification.setOnClickListener {
-            Intent(this, CompleteRegisterActivity::class.java).apply {
+            Intent(this, CompleteSignUpActivity::class.java).apply {
                 startActivity(this)
             }
         }
