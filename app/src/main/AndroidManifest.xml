@@ -25,24 +25,24 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.auth.login.LogInActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Shonic.WhiteStatusBar" />
+        <activity
             android:name=".ui.auth.signup.SignUpActivity"
             android:exported="false"
             android:theme="@style/Theme.Shonic.WhiteStatusBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.auth.verification.VerificationActivity"
+            android:name=".ui.auth.verification.SignUpVerificationActivity"
             android:exported="false"
             android:theme="@style/Theme.Shonic.WhiteStatusBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.auth.signup.CompleteRegisterActivity"
+            android:name=".ui.auth.signup.CompleteSignUpActivity"
             android:exported="false"
             android:theme="@style/Theme.Shonic.WhiteStatusBar"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ui.auth.login.LogInActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Shonic.WhiteStatusBar" />
     </application>
 
 </manifest>
