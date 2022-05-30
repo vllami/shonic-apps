@@ -23,6 +23,16 @@
     <string name="complete_sign_up_confirm_password">Konfirmasi Password</string>
     <string name="complete_sign_up_button">Selesai</string>
 
+    <!-- Log In -->
+    <string name="log_in_title">Masuk</string>
+    <string name="log_in_text_button_sign_up">Daftar</string>
+    <string name="log_in_email_hint">Email</string>
+    <string name="log_in_password_hint">Password</string>
+    <string name="log_in_forgot_password_button">Lupa password?</string>
+    <string name="log_in_button">Masuk</string>
+    <string name="log_in_or">atau</string>
+    <string name="log_in_google_log_in_button">Masuk dengan Google</string>
+
     <!-- Error -->
     <string name="error_field_required">Nama lengkap atau password tidak boleh kosong</string>
     <string name="error_password_not_match">Password tidak sama</string>
