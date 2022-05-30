@@ -13,14 +13,14 @@ import com.synrgy.finalproject.utils.Constants.SPLASH_DELAY
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
 
-    private lateinit var activitySplashScreenBinding: ActivitySplashScreenBinding
+    private lateinit var binding: ActivitySplashScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        activitySplashScreenBinding = ActivitySplashScreenBinding.inflate(layoutInflater)
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
 
-        setContentView(activitySplashScreenBinding.root)
+        setContentView(binding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
             Intent(this, LogInActivity::class.java).also { toLogIn ->
