@@ -6,152 +6,213 @@
     android:layout_height="match_parent"
     tools:context=".ui.auth.signup.SignUpActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_sign_up"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:elevation="5dp"
+        android:paddingStart="6dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/ll_sign_up_btn_back"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/ripple_background"
+            android:gravity="center">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_register_headline"
-                style="@style/textStyleSmall"
+            <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/register_masuk"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/all_arrow_back_default" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:fontFamily="@font/opensans_bold"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingBottom="1dp"
+            android:text="@string/sign_up_title"
+            android:textColor="@color/dark_gray"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_sign_up_text_btn_log_in"
+            style="@style/textStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/opensans_medium"
+            android:includeFontPadding="false"
+            android:text="@string/sign_up_text_button_log_in"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_register_email"
+        android:id="@+id/til_sign_up_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/register_email_hint"
-        android:padding="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/sign_up_email_hint"
+        android:imeOptions="actionNext"
+        android:nextFocusDown="@id/et_complete_sign_up_password"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:boxStrokeWidthFocused="1dp"
+        app:endIconDrawable="@drawable/ic_clear"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_sign_up">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_register_email"
+            android:id="@+id/et_sign_up_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusableInTouchMode="true"
-            android:imeOptions="actionDone"
-            android:inputType="textEmailAddress" />
+            android:fontFamily="@font/opensans_medium"
+            android:importantForAutofill="no"
+            android:inputType="textNoSuggestions|textEmailAddress"
+            android:letterSpacing="0.02"
+            android:textColor="@color/dark_gray"
+            android:textColorHint="@color/gray"
+            android:textSize="14sp">
 
-        <requestFocus />
+            <requestFocus />
+        </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_register_email"
+        android:id="@+id/btn_sign_up_email"
         style="@style/Button.MaterialComponents.Outlined"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="8dp"
+        android:enabled="false"
+        android:fontFamily="@font/opensans_medium"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.01"
+        android:text="@string/sign_up_next_button"
         android:textAllCaps="false"
-        android:text="@string/register_next"
-        app:layout_constraintBottom_toTopOf="@+id/tv_register_or"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_sign_up_or"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <View
-        android:id="@+id/v_register_left"
+        android:id="@+id/v_sign_up_left"
         android:layout_width="0dp"
         android:layout_height="1dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="16dp"
-        android:background="#9E9E9E"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_register_or"
-        app:layout_constraintEnd_toStartOf="@+id/tv_register_or"
-        app:layout_constraintStart_toStartOf="@+id/btn_register_email"
-        app:layout_constraintTop_toTopOf="@+id/tv_register_or" />
+        android:background="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_sign_up_or"
+        app:layout_constraintEnd_toStartOf="@+id/tv_sign_up_or"
+        app:layout_constraintStart_toStartOf="@+id/btn_sign_up_email"
+        app:layout_constraintTop_toTopOf="@+id/tv_sign_up_or" />
 
     <View
-        android:id="@+id/v_register_right"
+        android:id="@+id/v_sign_up_right"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginStart="16dp"
-        android:background="#9E9E9E"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_register_or"
-        app:layout_constraintEnd_toEndOf="@+id/btn_register_email"
-        app:layout_constraintStart_toEndOf="@+id/tv_register_or"
-        app:layout_constraintTop_toTopOf="@+id/tv_register_or" />
+        android:layout_marginTop="1dp"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_sign_up_or"
+        app:layout_constraintEnd_toEndOf="@+id/btn_sign_up_email"
+        app:layout_constraintStart_toEndOf="@+id/tv_sign_up_or"
+        app:layout_constraintTop_toTopOf="@+id/tv_sign_up_or" />
 
     <TextView
-        android:id="@+id/tv_register_or"
+        android:id="@+id/tv_sign_up_or"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="@string/register_or"
-        app:layout_constraintBottom_toTopOf="@+id/btn_register_email_google"
+        android:fontFamily="@font/opensans_regular"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="@string/sign_up_or"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_sign_up_google_log_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_register_email_google"
+        android:id="@+id/btn_sign_up_google_log_in"
         style="@style/Button.MaterialComponents.Google"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:textAllCaps="false"
+        android:layout_marginBottom="14dp"
         android:drawableStart="@drawable/ic_google"
-        android:paddingStart="65dp"
-        android:paddingEnd="70dp"
-        android:text="@string/register_google"
+        android:drawablePadding="-75dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.01"
+        android:paddingStart="95dp"
+        android:paddingTop="4dp"
+        android:text="@string/sign_up_google_log_in_button"
+        android:textAllCaps="false"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tv_register_terms"
+        app:layout_constraintBottom_toTopOf="@+id/tv_sign_up_terms"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="RtlSymmetry" />
 
     <TextView
-        android:id="@+id/tv_register_terms"
+        android:id="@+id/tv_sign_up_terms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="3dp"
+        android:fontFamily="@font/opensans_regular"
         android:textAlignment="center"
+        android:textColor="@color/dark_gray"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_register_conditions"
+        app:layout_constraintBottom_toTopOf="@+id/tv_sign_up_conditions"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Dengan mendaftar, saya menyetujui Syarat dan" />
 
     <TextView
-        android:id="@+id/tv_register_conditions"
+        android:id="@+id/tv_sign_up_conditions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:fontFamily="@font/opensans_regular"
         android:textAlignment="center"
+        android:textColor="@color/dark_gray"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Ketentuan serta Kebijakan Privasi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
