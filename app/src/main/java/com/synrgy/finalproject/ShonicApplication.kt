@@ -5,7 +5,9 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class ShonicApplication : Application() {
+
     override fun onCreate() {
         super.onCreate()
     }
+
 }
