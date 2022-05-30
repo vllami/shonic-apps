@@ -8,14 +8,12 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
-import android.view.View.OnFocusChangeListener
-import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.finalproject.R
 import com.synrgy.finalproject.databinding.ActivitySignUpVerificationBinding
 import com.synrgy.finalproject.ui.auth.signup.CompleteSignUpActivity
 import com.synrgy.finalproject.ui.auth.signup.SignUpActivity
-import com.synrgy.finalproject.utils.Constants
+import com.synrgy.finalproject.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,11 +36,11 @@ class SignUpVerificationActivity : AppCompatActivity() {
 
                 btnSignUpVerification.isEnabled =
                     input1.isNotEmpty() &&
-                    input2.isNotEmpty() &&
-                    input3.isNotEmpty() &&
-                    input4.isNotEmpty() &&
-                    input5.isNotEmpty() &&
-                    input6.isNotEmpty()
+                            input2.isNotEmpty() &&
+                            input3.isNotEmpty() &&
+                            input4.isNotEmpty() &&
+                            input5.isNotEmpty() &&
+                            input6.isNotEmpty()
             }
         }
 
@@ -63,7 +61,12 @@ class SignUpVerificationActivity : AppCompatActivity() {
                 }
             }
 
-            setDescription(getString(R.string.sign_up_verification_description, Constants.DUMMY_EMAIL))
+            setDescription(
+                getString(
+                    R.string.sign_up_verification_description,
+                    Constants.DUMMY_EMAIL
+                )
+            )
 
             editTextMoving()
 
@@ -76,7 +79,10 @@ class SignUpVerificationActivity : AppCompatActivity() {
                     }
 
                     override fun onTick(millisUntilFinished: Long) {
-                        text = getString(R.string.sign_up_verification_resend_button, millisUntilFinished / 1000)
+                        text = getString(
+                            R.string.sign_up_verification_resend_button,
+                            millisUntilFinished / 1000
+                        )
                     }
                 }.start()
             }
@@ -108,178 +114,39 @@ class SignUpVerificationActivity : AppCompatActivity() {
 
     private fun editTextMoving() {
         with(binding) {
-            etSignUpVerificationDigit1.addTextChangedListener(object : TextWatcher {
-                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    when (etSignUpVerificationDigit1.text.toString().length) {
-                        1 -> etSignUpVerificationDigit2.requestFocus()
-                    }
-                }
-
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
-                override fun afterTextChanged(s: Editable) {}
-            })
-
-            etSignUpVerificationDigit2.addTextChangedListener(object : TextWatcher {
-                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    when (etSignUpVerificationDigit2.text.toString().length) {
-                        1 -> etSignUpVerificationDigit3.requestFocus()
-                    }
-                }
-
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
-                override fun afterTextChanged(s: Editable) {}
-            })
-
-            etSignUpVerificationDigit3.addTextChangedListener(object : TextWatcher {
-                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    when (etSignUpVerificationDigit3.text.toString().length) {
-                        1 -> etSignUpVerificationDigit4.requestFocus()
-                    }
-                }
-
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
-                override fun afterTextChanged(s: Editable) {}
-            })
-
-            etSignUpVerificationDigit4.addTextChangedListener(object : TextWatcher {
-                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    when (etSignUpVerificationDigit4.text.toString().length) {
-                        1 -> etSignUpVerificationDigit5.requestFocus()
-                    }
-                }
-
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
-                override fun afterTextChanged(s: Editable) {}
-            })
-
-            etSignUpVerificationDigit5.addTextChangedListener(object : TextWatcher {
-                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    when (etSignUpVerificationDigit5.text.toString().length) {
-                        1 -> etSignUpVerificationDigit6.requestFocus()
-                    }
-                }
-
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
-                override fun afterTextChanged(s: Editable) {}
-            })
+            etSignUpVerificationDigit1.addTextChanged(etSignUpVerificationDigit2)
+            etSignUpVerificationDigit2.addTextChanged(etSignUpVerificationDigit3)
+            etSignUpVerificationDigit3.addTextChanged(etSignUpVerificationDigit4)
+            etSignUpVerificationDigit4.addTextChanged(etSignUpVerificationDigit5)
+            etSignUpVerificationDigit5.addTextChanged(etSignUpVerificationDigit6)
         }
     }
 
     private fun editTextFocus() {
         with(binding) {
             etSignUpVerificationDigit1.apply {
-                addTextChangedListener(textWatcher)
-
-                setOnEditorActionListener { _, editorInfo, _ ->
-                    when (editorInfo) {
-                        EditorInfo.IME_ACTION_DONE -> clearFocus()
-                    }
-
-                    false
-                }
-
-                onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-                    when {
-                        hasFocus -> selectAll()
-                    }
-                }
+                addTextWatcher(textWatcher)
             }
 
             etSignUpVerificationDigit2.apply {
-                addTextChangedListener(textWatcher)
-
-                setOnEditorActionListener { _, editorInfo, _ ->
-                    when (editorInfo) {
-                        EditorInfo.IME_ACTION_DONE -> clearFocus()
-                    }
-
-                    false
-                }
-
-                onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-                    when {
-                        hasFocus -> selectAll()
-                    }
-                }
+                addTextWatcher(textWatcher)
             }
 
             etSignUpVerificationDigit3.apply {
-                addTextChangedListener(textWatcher)
-
-                setOnEditorActionListener { _, editorInfo, _ ->
-                    when (editorInfo) {
-                        EditorInfo.IME_ACTION_DONE -> clearFocus()
-                    }
-
-                    false
-                }
-
-                onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-                    when {
-                        hasFocus -> selectAll()
-                    }
-                }
+                addTextWatcher(textWatcher)
             }
 
             etSignUpVerificationDigit4.apply {
-                addTextChangedListener(textWatcher)
-
-                setOnEditorActionListener { _, editorInfo, _ ->
-                    when (editorInfo) {
-                        EditorInfo.IME_ACTION_DONE -> clearFocus()
-                    }
-
-                    false
-                }
-
-                onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-                    when {
-                        hasFocus -> selectAll()
-                    }
-                }
+                addTextWatcher(textWatcher)
             }
 
             etSignUpVerificationDigit5.apply {
-                addTextChangedListener(textWatcher)
-
-                setOnEditorActionListener { _, editorInfo, _ ->
-                    when (editorInfo) {
-                        EditorInfo.IME_ACTION_DONE -> clearFocus()
-                    }
-
-                    false
-                }
-
-                onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-                    when {
-                        hasFocus -> selectAll()
-                    }
-                }
+                addTextWatcher(textWatcher)
             }
 
             etSignUpVerificationDigit6.apply {
-                addTextChangedListener(textWatcher)
-
-                setOnEditorActionListener { _, editorInfo, _ ->
-                    when (editorInfo) {
-                        EditorInfo.IME_ACTION_DONE -> clearFocus()
-                    }
-
-                    false
-                }
-
-                onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-                    when {
-                        hasFocus -> selectAll()
-                    }
-                }
+                addTextWatcher(textWatcher)
             }
         }
     }
-
 }
