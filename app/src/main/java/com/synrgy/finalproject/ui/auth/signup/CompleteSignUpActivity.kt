@@ -91,6 +91,17 @@ class CompleteSignUpActivity : AppCompatActivity() {
         }
     }
 
+    private fun isAllFieldsFilled(username: String, password: String, confirmPassword: String): Boolean {
+        resetError()
+
+        return when {
+            username.isEmpty() -> false
+            password.isEmpty() -> false
+            confirmPassword.isEmpty() -> false
+            else -> true
+        }
+    }
+
     // private fun isValidPassword(password: String?): Boolean {
     //     password?.let {
     //         val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{6,20}$"
@@ -102,6 +113,14 @@ class CompleteSignUpActivity : AppCompatActivity() {
 
     private fun isPasswordMatch(password: String, confirmPassword: String): Boolean {
         return password == confirmPassword
+    }
+
+    private fun resetError() {
+        with(binding) {
+            tilCompleteSignUpFullName.error = null
+            tilCompleteSignUpPassword.error = null
+            tilCompleteSignUpConfirmPassword.error = null
+        }
     }
 
 }
