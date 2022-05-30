@@ -3,98 +3,105 @@ package com.synrgy.finalproject.ui.auth.signup
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextWatcher
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
 import com.synrgy.finalproject.R
+import com.synrgy.finalproject.databinding.ActivityCompleteSignUpBinding
 import com.synrgy.finalproject.ui.auth.login.LogInActivity
-import com.synrgy.finalproject.databinding.ActivityCompleteRegisterBinding
-import com.synrgy.finalproject.utils.BaseMessage
-import com.synrgy.finalproject.utils.setActionBarTitle
+import com.synrgy.finalproject.ui.auth.verification.SignUpVerificationActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CompleteRegisterActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCompleteRegisterBinding
+class CompleteSignUpActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityCompleteSignUpBinding
+
+    private val textWatcher = object : TextWatcher {
+        override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+
+        override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+            binding.apply {
+                val fullName = etCompleteSignUpFullName.text.toString().trim()
+                val password = etCompleteSignUpPassword.text.toString().trim()
+                val confirmPassword = etCompleteSignUpConfirmPassword.text.toString().trim()
+
+                btnCompleteSignUpDone.isEnabled =
+                    fullName.isNotEmpty() &&
+                    password.isNotEmpty() &&
+                    // isValidPassword(password) &&
+                    confirmPassword.isNotEmpty() &&
+                    isPasswordMatch(password, confirmPassword)
+            }
+        }
+
+        override fun afterTextChanged(editable: Editable) {}
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCompleteRegisterBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setActionBarTitle(binding.toolbar, getString(R.string.register_complete))
-        onToolbarNavigationClicked()
-        clearFocus()
-        onButtonClicked()
-    }
 
+        binding = ActivityCompleteSignUpBinding.inflate(layoutInflater)
 
-    private fun onToolbarNavigationClicked() {
-        binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }
-    }
+        with(binding) {
+            setContentView(root)
 
-    private fun clearFocus() {
-        binding.etRegisterConfirmPassword.setOnEditorActionListener { _, editorInfo, _ ->
-            when (editorInfo) {
-                EditorInfo.IME_ACTION_DONE -> binding.etRegisterConfirmPassword.clearFocus()
+            llCompleteSignUpBtnBack.setOnClickListener {
+                Intent(this@CompleteSignUpActivity, SignUpVerificationActivity::class.java).apply {
+                    startActivity(this)
+                }
             }
-            false
-        }
-    }
 
-    private fun onButtonClicked() {
-        binding.btnRegisterCompleted.setOnClickListener {
-            val fullName = binding.etRegisterFullName.text.toString()
-            val password = binding.etRegisterPassword.text.toString()
-            val confirmPassword = binding.etRegisterConfirmPassword.text.toString()
-            if (!isAllFieldsFilled(fullName, password, confirmPassword)) {
-                Snackbar.make(
-                    binding.root,
-                    getString(R.string.error_field_required),
-                    Snackbar.LENGTH_SHORT
-                ).show()
-            } else {
-                if (!isPasswordMatch(password, confirmPassword)) {
-                    binding.tfRegisterConfirmPassword.error =
-                        getString(R.string.error_password_not_match)
-                } else {
-                    Intent(this, LogInActivity::class.java).apply {
-                        flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                        startActivity(this)
-                        finish()
+            etCompleteSignUpFullName.addTextChangedListener(textWatcher)
+
+            etCompleteSignUpPassword.addTextChangedListener(textWatcher)
+
+            etCompleteSignUpConfirmPassword.apply {
+                addTextChangedListener(textWatcher)
+
+                setOnEditorActionListener { _, editorInfo, _ ->
+                    when (editorInfo) {
+                        EditorInfo.IME_ACTION_DONE -> clearFocus()
+                    }
+
+                    false
+                }
+            }
+
+            btnCompleteSignUpDone.apply {
+                setOnClickListener {
+                    val password = etCompleteSignUpPassword.text.toString()
+                    val confirmPassword = etCompleteSignUpConfirmPassword.text.toString()
+
+                    when {
+                        !isPasswordMatch(password, confirmPassword) -> {
+                            tilCompleteSignUpConfirmPassword.error = getString(R.string.error_password_not_match)
+                        }
+                        else -> {
+                            Intent(this@CompleteSignUpActivity, LogInActivity::class.java).apply {
+                                flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+
+                                startActivity(this)
+                                finish()
+                            }
+                        }
                     }
                 }
             }
         }
     }
 
-    private fun isAllFieldsFilled(
-        username: String,
-        password: String,
-        confirmPassword: String
-    ): Boolean {
-        resetError()
-        if (username.isEmpty()) {
-            return false
-        } else if (password.isEmpty()) {
-            return false
-        } else if (confirmPassword.isEmpty()) {
-            return false
-        }
-        return true
-
-    }
+    // private fun isValidPassword(password: String?): Boolean {
+    //     password?.let {
+    //         val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{6,20}$"
+    //         val passwordMatcher = Regex(passwordPattern)
+    //
+    //         return passwordMatcher.find(password) != null
+    //     } ?: return false
+    // }
 
     private fun isPasswordMatch(password: String, confirmPassword: String): Boolean {
         return password == confirmPassword
-    }
-
-    private fun resetError() {
-        with(binding) {
-            tfRegisterFullName.error = null
-            tfRegisterPassword.error = null
-            tfRegisterConfirmPassword.error = null
-        }
     }
 
 }
