@@ -33,6 +33,12 @@
     <string name="log_in_or">atau</string>
     <string name="log_in_google_log_in_button">Masuk dengan Google</string>
 
+    <!-- Forgot Password -->
+    <string name="forgot_password_title">Ganti Password</string>
+    <string name="forgot_password_email_hint">Email</string>
+    <string name="forgot_password_next_button">Lanjut</string>
+    <string name="forgot_password_back_to_log_in_or_sign_up_text_button">Kembali ke halaman Masuk atau Daftar</string>
+
     <!-- Error -->
     <string name="error_field_required">Nama lengkap atau password tidak boleh kosong</string>
     <string name="error_password_not_match">Password tidak sama</string>
