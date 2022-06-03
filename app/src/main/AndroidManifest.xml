@@ -30,7 +30,12 @@
             android:theme="@style/Theme.Shonic.WhiteStatusBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.auth.forgotpassword.ForgotPasswordActivity"
+            android:name=".ui.auth.login.password.forgotpassword.ForgotPasswordActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Shonic.WhiteStatusBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.auth.login.password.forgotpassword.verification.ForgotPasswordVerificationActivity"
             android:exported="false"
             android:theme="@style/Theme.Shonic.WhiteStatusBar"
             android:windowSoftInputMode="adjustResize" />
@@ -40,7 +45,7 @@
             android:theme="@style/Theme.Shonic.WhiteStatusBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.auth.verification.SignUpVerificationActivity"
+            android:name=".ui.auth.signup.verification.SignUpVerificationActivity"
             android:exported="false"
             android:theme="@style/Theme.Shonic.WhiteStatusBar"
             android:windowSoftInputMode="adjustResize" />
