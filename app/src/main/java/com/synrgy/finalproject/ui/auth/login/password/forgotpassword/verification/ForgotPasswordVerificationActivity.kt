@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.finalproject.R
 import com.synrgy.finalproject.databinding.ActivityForgotPasswordVerificationBinding
 import com.synrgy.finalproject.ui.auth.login.password.forgotpassword.ForgotPasswordActivity
+import com.synrgy.finalproject.ui.auth.login.password.newpassword.NewPasswordActivity
 import com.synrgy.finalproject.utils.Constants
 import com.synrgy.finalproject.utils.addTextChanged
 import com.synrgy.finalproject.utils.addTextWatcher
@@ -87,9 +88,9 @@ class ForgotPasswordVerificationActivity : AppCompatActivity() {
             }
 
             btnForgotPasswordVerification.setOnClickListener {
-                // Intent(this@ForgotPasswordVerificationActivity, ::class.java).apply {
-                //     startActivity(this)
-                // }
+                Intent(this@ForgotPasswordVerificationActivity, NewPasswordActivity::class.java).apply {
+                    startActivity(this)
+                }
             }
         }
     }
