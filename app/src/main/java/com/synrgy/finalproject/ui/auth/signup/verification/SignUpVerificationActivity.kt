@@ -1,4 +1,4 @@
-package com.synrgy.finalproject.ui.auth.verification
+package com.synrgy.finalproject.ui.auth.signup.verification
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.finalproject.R
 import com.synrgy.finalproject.databinding.ActivitySignUpVerificationBinding
 import com.synrgy.finalproject.ui.auth.signup.CompleteSignUpActivity
-import com.synrgy.finalproject.ui.auth.signup.SignUpActivity
 import com.synrgy.finalproject.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
