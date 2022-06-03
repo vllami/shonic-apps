@@ -1,11 +1,13 @@
 package com.synrgy.finalproject.ui.auth.login.password.newpassword
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.finalproject.databinding.ActivityNewPasswordBinding
+import com.synrgy.finalproject.ui.auth.login.password.passwordchanged.PasswordChangedActivity
 
 class NewPasswordActivity : AppCompatActivity() {
 
@@ -57,7 +59,9 @@ class NewPasswordActivity : AppCompatActivity() {
             }
 
             btnNewPasswordSave.setOnClickListener {
-
+                Intent(this@NewPasswordActivity, PasswordChangedActivity::class.java).apply {
+                    startActivity(this)
+                }
             }
         }
     }
