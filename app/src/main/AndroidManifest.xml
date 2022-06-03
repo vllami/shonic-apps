@@ -45,6 +45,11 @@
             android:theme="@style/Theme.Shonic.WhiteStatusBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".ui.auth.login.password.passwordchanged.PasswordChangedActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Shonic.WhiteStatusBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".ui.auth.signup.SignUpActivity"
             android:exported="false"
             android:theme="@style/Theme.Shonic.WhiteStatusBar"
