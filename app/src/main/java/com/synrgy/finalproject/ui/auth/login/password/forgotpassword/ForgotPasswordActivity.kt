@@ -1,4 +1,4 @@
-package com.synrgy.finalproject.ui.auth.forgotpassword
+package com.synrgy.finalproject.ui.auth.login.password.forgotpassword
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,8 +11,7 @@ import android.text.style.ForegroundColorSpan
 import android.util.Patterns
 import com.synrgy.finalproject.R
 import com.synrgy.finalproject.databinding.ActivityForgotPasswordBinding
-import com.synrgy.finalproject.ui.auth.login.LogInActivity
-import com.synrgy.finalproject.ui.auth.verification.ForgotPasswordVerificationActivity
+import com.synrgy.finalproject.ui.auth.login.password.forgotpassword.verification.ForgotPasswordVerificationActivity
 
 class ForgotPasswordActivity : AppCompatActivity() {
 
