@@ -56,9 +56,12 @@ class SignUpVerificationActivity : AppCompatActivity() {
             setContentView(root)
 
             llSignUpVerificationBtnBack.setOnClickListener {
-                Intent(this@SignUpVerificationActivity, SignUpActivity::class.java).apply {
-                    startActivity(this)
-                }
+                // Intent(this@SignUpVerificationActivity, SignUpActivity::class.java).apply {
+                //     startActivity(this)
+                // }
+                //
+                // this@SignUpVerificationActivity.finish()
+                onBackPressed()
             }
 
             setDescription(
