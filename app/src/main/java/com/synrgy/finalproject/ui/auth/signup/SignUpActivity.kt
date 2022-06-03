@@ -13,8 +13,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.finalproject.R
 import com.synrgy.finalproject.databinding.ActivitySignUpBinding
-import com.synrgy.finalproject.ui.auth.login.LogInActivity
-import com.synrgy.finalproject.ui.auth.verification.SignUpVerificationActivity
+import com.synrgy.finalproject.ui.auth.signup.verification.SignUpVerificationActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,17 +46,14 @@ class SignUpActivity : AppCompatActivity() {
             setContentView(root)
 
             llSignUpBtnBack.setOnClickListener {
-                Intent(this@SignUpActivity, LogInActivity::class.java).apply {
-                    startActivity(this)
-                }
+                // Intent(this@SignUpActivity, LogInActivity::class.java).apply {
+                //     startActivity(this)
+                // }
+                onBackPressed()
             }
 
             tvSignUpTextBtnLogIn.setOnClickListener {
-                Intent(this@SignUpActivity, LogInActivity::class.java).apply {
-                    flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-
-                    startActivity(this)
-                }
+                onBackPressed()
             }
 
             etSignUpEmail.apply {
@@ -70,6 +66,9 @@ class SignUpActivity : AppCompatActivity() {
 
                     false
                 }
+
+                // this@SignUpActivity.finish()
+                // Penyebab Daftar ga bisa di klik
             }
 
             btnSignUp.apply {
