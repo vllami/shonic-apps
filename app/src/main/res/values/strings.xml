@@ -45,6 +45,19 @@
     <string name="forgot_password_verification_description">Kode berhasil dikirim melalui email \n<b>%1$s</b>, periksa dan masukan kode \ndisini untuk dapat melakukan reset password.</string>
     <string name="forgot_password_verification_resend_button">Mohon tunggu dalam %1$d detik untuk kirim ulang</string>
 
+    <!-- New Password -->
+    <string name="new_password_title">Atur Ulang Password</string>
+    <string name="new_password">Password Baru</string>
+    <string name="new_password_confirm">Konfirmasi Password Baru</string>
+    <string name="new_password_button_save">Simpan</string>
+
+    <!-- Password Changed -->
+    <string name="password_changed_illustration_description">Ilustrasi Password telah berubah</string>
+    <string name="password_changed_title">Password berhasil diubah</string>
+    <string name="password_changed_description">Silakan masuk ke akunmu dengan password yang baru</string>
+    <string name="password_changed_button">Masuk</string>
+    <string name="password_changed_button_to_home">Kembali ke Beranda</string>
+
     <!-- Error -->
     <string name="error_field_required">Nama lengkap atau password tidak boleh kosong</string>
     <string name="error_password_not_match">Password tidak sama</string>
