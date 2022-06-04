@@ -35,9 +35,15 @@
 
     <!-- Forgot Password -->
     <string name="forgot_password_title">Ganti Password</string>
+    <string name="forgot_password_description">Masukkan email yang terdaftar pada akun \nShonic untuk mengatur ulang password Anda.</string>
     <string name="forgot_password_email_hint">Email</string>
     <string name="forgot_password_next_button">Lanjut</string>
     <string name="forgot_password_back_to_log_in_or_sign_up_text_button">Kembali ke halaman Masuk atau Daftar</string>
+
+    <!-- Forgot Password Verification -->
+    <string name="forgot_password_verification_title">Verifikasi Akun</string>
+    <string name="forgot_password_verification_description">Kode berhasil dikirim melalui email \n<b>%1$s</b>, periksa dan masukan kode \ndisini untuk dapat melakukan reset password.</string>
+    <string name="forgot_password_verification_resend_button">Mohon tunggu dalam %1$d detik untuk kirim ulang</string>
 
     <!-- Error -->
     <string name="error_field_required">Nama lengkap atau password tidak boleh kosong</string>

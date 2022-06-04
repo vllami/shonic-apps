@@ -1,4 +1,4 @@
-package com.synrgy.finalproject.ui.auth.forgotpassword
+package com.synrgy.finalproject.ui.auth.login.password.forgotpassword
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +11,7 @@ import android.text.style.ForegroundColorSpan
 import android.util.Patterns
 import com.synrgy.finalproject.R
 import com.synrgy.finalproject.databinding.ActivityForgotPasswordBinding
-import com.synrgy.finalproject.ui.auth.login.LogInActivity
+import com.synrgy.finalproject.ui.auth.login.password.forgotpassword.verification.ForgotPasswordVerificationActivity
 
 class ForgotPasswordActivity : AppCompatActivity() {
 
@@ -40,14 +40,23 @@ class ForgotPasswordActivity : AppCompatActivity() {
             setContentView(root)
 
             llForgotPasswordBtnBack.setOnClickListener {
-                Intent(this@ForgotPasswordActivity, LogInActivity::class.java).apply {
-                    flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-
-                    startActivity(this)
-                }
+                onBackPressed()
             }
 
             etForgotPasswordEmail.addTextChangedListener(textWatcher)
+
+            btnForgotPassword.apply {
+                setOnClickListener {
+                    Intent(this@ForgotPasswordActivity, ForgotPasswordVerificationActivity::class.java).also {
+                        it.apply {
+                            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+
+                            putExtra("forgot_password", text.toString())
+                            startActivity(this)
+                        }
+                    }
+                }
+            }
 
             textButtonBackToLogInOrSignUp()
         }

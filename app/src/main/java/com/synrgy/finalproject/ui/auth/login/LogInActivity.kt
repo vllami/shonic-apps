@@ -9,7 +9,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.finalproject.databinding.ActivityLogInBinding
-import com.synrgy.finalproject.ui.auth.forgotpassword.ForgotPasswordActivity
+import com.synrgy.finalproject.ui.auth.login.password.forgotpassword.ForgotPasswordActivity
 import com.synrgy.finalproject.ui.auth.signup.SignUpActivity
 
 class LogInActivity : AppCompatActivity() {

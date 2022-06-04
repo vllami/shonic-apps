@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.synrgy.finalproject.R
 import com.synrgy.finalproject.databinding.ActivityCompleteSignUpBinding
 import com.synrgy.finalproject.ui.auth.login.LogInActivity
-import com.synrgy.finalproject.ui.auth.verification.SignUpVerificationActivity
+import com.synrgy.finalproject.ui.auth.signup.verification.SignUpVerificationActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
