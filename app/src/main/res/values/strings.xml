@@ -15,6 +15,7 @@
     <string name="sign_up_verification_title">Verifikasi Akun</string>
     <string name="sign_up_verification_description">Kode berhasil dikirim melalui email \n<b>%1$s</b>, periksa dan masukan kode \ndisini untuk dapat membuat akun baru.</string>
     <string name="sign_up_verification_resend_button">Mohon tunggu dalam %1$d detik untuk kirim ulang</string>
+    <string name="sign_up_verification_error_code">Kode yang anda masukan salah</string>
 
     <!-- Complete Sign Up -->
     <string name="complete_sign_up_title">Lengkapi Pendaftaran</string>
@@ -61,4 +62,5 @@
     <!-- Error -->
     <string name="error_field_required">Nama lengkap atau password tidak boleh kosong</string>
     <string name="error_password_not_match">Password tidak sama</string>
+
 </resources>

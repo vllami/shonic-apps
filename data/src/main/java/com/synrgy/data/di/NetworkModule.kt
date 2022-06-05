@@ -1,8 +1,6 @@
 package com.synrgy.data.di
 
-import com.hafidh.domain.signup.SignUpRepository
 import com.synrgy.data.BuildConfig
-import com.synrgy.data.signup.repository.SignUpRepositoryImpl
 import com.synrgy.data.signup.service.SignUpService
 import dagger.Module
 import dagger.Provides
@@ -22,7 +20,7 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://shonic-test.herokuapp.com/api/v1")
+            .baseUrl("http://shonic-test.herokuapp.com/api/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

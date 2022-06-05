@@ -7,14 +7,21 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.util.Patterns
-import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.synrgy.finalproject.R
 import com.synrgy.finalproject.databinding.ActivitySignUpBinding
+import com.synrgy.finalproject.ui.auth.login.LogInActivity
 import com.synrgy.finalproject.ui.auth.signup.verification.SignUpVerificationActivity
+import com.synrgy.finalproject.utils.*
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class SignUpActivity : AppCompatActivity() {
@@ -29,7 +36,8 @@ class SignUpActivity : AppCompatActivity() {
         override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
             binding.apply {
                 etSignUpEmail.text.toString().trim().apply {
-                    btnSignUp.isEnabled = isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+                    btnSignUp.isEnabled =
+                        isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
                 }
             }
         }
@@ -45,10 +53,43 @@ class SignUpActivity : AppCompatActivity() {
         with(binding) {
             setContentView(root)
 
+            viewModel.stateCheckEmail.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .onEach { state ->
+                    when (state) {
+                        is SignUpViewModel.SignUpState.Init -> Unit
+                        is SignUpViewModel.SignUpState.Loading -> {
+                            pbSignUp.visible()
+                        }
+                        is SignUpViewModel.SignUpState.Error -> {
+                            pbSignUp.gone()
+                            val email = etSignUpEmail.text.toString().trim()
+                            alert {
+                                title("Email sudah terdaftar")
+                                message("Lanjut masuk menggunakan email ${email}?")
+                                positiveButton(text = "Ya, Masuk") {
+                                    Intent(this@SignUpActivity, LogInActivity::class.java).also {
+                                        startActivity(it)
+                                    }
+                                }
+                                negativeButton(text = "Ubah Email")
+                            }
+                        }
+                        is SignUpViewModel.SignUpState.Success -> {
+                            pbSignUp.gone()
+                            val email = etSignUpEmail.text.toString().trim()
+                            Intent(
+                                this@SignUpActivity,
+                                SignUpVerificationActivity::class.java
+                            ).also {
+                                it.putExtra(EXTRA_EMAIL, email)
+                                Log.d("SignUpActivity", "email: $email")
+                                startActivity(it)
+                            }
+                        }
+                    }
+                }.launchIn(lifecycleScope)
+
             llSignUpBtnBack.setOnClickListener {
-                // Intent(this@SignUpActivity, LogInActivity::class.java).apply {
-                //     startActivity(this)
-                // }
                 onBackPressed()
             }
 
@@ -57,30 +98,14 @@ class SignUpActivity : AppCompatActivity() {
             }
 
             etSignUpEmail.apply {
-                addTextChangedListener(textWatcher)
-
-                setOnEditorActionListener { _, editorInfo, _ ->
-                    when (editorInfo) {
-                        EditorInfo.IME_ACTION_DONE -> clearFocus()
-                    }
-
-                    false
-                }
-
-                // this@SignUpActivity.finish()
-                // Penyebab Daftar ga bisa di klik
+                addTextChanged(this)
+                addTextWatcher(textWatcher)
             }
 
             btnSignUp.apply {
                 setOnClickListener {
-                    Intent(this@SignUpActivity, SignUpVerificationActivity::class.java).also {
-                        it.apply {
-                            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-
-                            putExtra("email", text.toString())
-                            startActivity(this)
-                        }
-                    }
+                    val email = etSignUpEmail.text.toString().trim()
+                    viewModel.checkEmail(email)
                 }
             }
 
@@ -134,6 +159,10 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    companion object {
+        const val EXTRA_EMAIL = "extra_email"
     }
 
 }
