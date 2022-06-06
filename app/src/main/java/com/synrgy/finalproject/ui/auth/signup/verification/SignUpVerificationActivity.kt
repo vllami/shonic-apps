@@ -9,6 +9,7 @@ import android.text.Spanned
 import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
 import android.util.Log
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -65,40 +66,16 @@ class SignUpVerificationActivity : AppCompatActivity() {
 
         binding = ActivitySignUpVerificationBinding.inflate(layoutInflater)
         with(binding) {
-            val email = intent?.extras?.getString(EXTRA_EMAIL) ?: "sulitttt"
+            val email = intent?.extras?.getString(EXTRA_EMAIL) ?: "capek bener badan ya"
             Log.d("SignUpVerificationActivity", "email: $email")
             observe(email)
             setContentView(root)
-            setDescription(
-                getString(
-                    R.string.sign_up_verification_description,
-                    email
-                ), email
-            )
+            setDescription(getString(R.string.sign_up_verification_description, email), email)
             startTimeCountDown(binding.tvSignUpVerificationDescriptionCountdown)
             editTextMoving()
             editTextFocus()
-            btnSignUpVerification.setOnClickListener {
-                val otp = StringBuilder().append(
-                    binding.etSignUpVerificationDigit1.text.toString()
-                ).append(
-                    binding.etSignUpVerificationDigit2.text.toString()
-                ).append(
-                    binding.etSignUpVerificationDigit3.text.toString()
-                ).append(
-                    binding.etSignUpVerificationDigit4.text.toString()
-                ).append(
-                    binding.etSignUpVerificationDigit5.text.toString()
-                ).append(
-                    binding.etSignUpVerificationDigit6.text.toString()
-                ).toString().toInt()
-                email.let {
-                    viewModel.verifyEmail(it, otp)
-                }
-            }
-            llSignUpVerificationBtnBack.setOnClickListener {
-                onBackPressed()
-            }
+            setOnVerifyClickListener(email)
+            onNaviBackPressed(this.llSignUpVerificationBtnBack)
         }
     }
 
@@ -131,31 +108,12 @@ class SignUpVerificationActivity : AppCompatActivity() {
 
     private fun editTextFocus() {
         with(binding) {
-            etSignUpVerificationDigit1.apply {
-                addTextWatcher(textWatcher)
-            }
-
-            etSignUpVerificationDigit2.apply {
-                addTextWatcher(textWatcher)
-            }
-
-            etSignUpVerificationDigit3.apply {
-                addTextWatcher(textWatcher)
-            }
-
-            etSignUpVerificationDigit4.apply {
-                addTextWatcher(textWatcher)
-            }
-
-            etSignUpVerificationDigit5.apply {
-                addTextWatcher(textWatcher)
-            }
-
-            etSignUpVerificationDigit6.apply {
-                addTextWatcher(textWatcher)
-            }
-
-
+            etSignUpVerificationDigit1.addTextWatcher(textWatcher)
+            etSignUpVerificationDigit2.addTextWatcher(textWatcher)
+            etSignUpVerificationDigit3.addTextWatcher(textWatcher)
+            etSignUpVerificationDigit4.addTextWatcher(textWatcher)
+            etSignUpVerificationDigit5.addTextWatcher(textWatcher)
+            etSignUpVerificationDigit6.addTextWatcher(textWatcher)
         }
     }
 
@@ -165,7 +123,6 @@ class SignUpVerificationActivity : AppCompatActivity() {
                 override fun onFinish() {
                     text = ""
                 }
-
                 override fun onTick(millisUntilFinished: Long) {
                     text = getString(
                         R.string.sign_up_verification_resend_button,
@@ -206,6 +163,35 @@ class SignUpVerificationActivity : AppCompatActivity() {
                         }
                     }
                 }.launchIn(lifecycleScope)
+        }
+    }
+
+    private fun setOnVerifyClickListener(email: String) {
+        with(binding){
+            btnSignUpVerification.setOnClickListener {
+                val otp = StringBuilder().append(
+                    binding.etSignUpVerificationDigit1.text.toString()
+                ).append(
+                    binding.etSignUpVerificationDigit2.text.toString()
+                ).append(
+                    binding.etSignUpVerificationDigit3.text.toString()
+                ).append(
+                    binding.etSignUpVerificationDigit4.text.toString()
+                ).append(
+                    binding.etSignUpVerificationDigit5.text.toString()
+                ).append(
+                    binding.etSignUpVerificationDigit6.text.toString()
+                ).toString().toInt()
+                email.let {
+                    viewModel.verifyEmail(it, otp)
+                }
+            }
+        }
+    }
+
+    private fun onNaviBackPressed(llSignUpVerificationBtnBack: LinearLayout) {
+        llSignUpVerificationBtnBack.setOnClickListener {
+            onBackPressed()
         }
     }
 

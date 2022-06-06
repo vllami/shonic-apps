@@ -1,5 +1,6 @@
 package com.synrgy.finalproject.ui.auth.signup
 
+
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -10,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.synrgy.finalproject.R
 import com.synrgy.finalproject.databinding.ActivityCompleteSignUpBinding
 import com.synrgy.finalproject.ui.auth.login.LogInActivity
+import com.synrgy.finalproject.ui.auth.signup.SignUpActivity.Companion.EXTRA_EMAIL
 import com.synrgy.finalproject.utils.BaseMessage
 import com.synrgy.finalproject.utils.disable
 import com.synrgy.finalproject.utils.gone
@@ -30,7 +32,7 @@ class CompleteSignUpActivity : AppCompatActivity() {
 
         with(binding) {
             setContentView(root)
-            val email = intent?.getStringExtra(Intent.EXTRA_EMAIL)
+            val email = intent?.getStringExtra(EXTRA_EMAIL)
             viewModel.stateComplete.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED).onEach { state ->
                 when (state) {
                     is SignUpViewModel.CompleteSignUpState.Init -> Unit
@@ -44,6 +46,7 @@ class CompleteSignUpActivity : AppCompatActivity() {
                     }
                     is SignUpViewModel.CompleteSignUpState.Success -> {
                         pbCompleteSignUp.gone()
+                        BaseMessage.longToast(this@CompleteSignUpActivity, getString(R.string.sign_up_success))
                         Intent(this@CompleteSignUpActivity, LogInActivity::class.java).also {
                             startActivity(it)
                             finish()
