@@ -50,6 +50,21 @@
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
+        android:id="@+id/tv_error_verification_code"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:drawablePadding="8dp"
+        android:visibility="gone"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#CB3A31"
+        android:background="@drawable/combine_color"
+        app:drawableStartCompat="@drawable/ic_error_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_sign_up_verification" />
+
+    <TextView
         android:id="@+id/tv_sign_up_verification_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,7 +78,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_sign_up_verification"
+        app:layout_constraintTop_toBottomOf="@+id/tv_error_verification_code"
         tools:text="Kode berhasil dikirim melalui email shonic@gmail.com, periksa dan masukan kode \ndisini untuk dapat membuat akun baru." />
 
     <LinearLayout
@@ -359,5 +374,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pb_verification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
