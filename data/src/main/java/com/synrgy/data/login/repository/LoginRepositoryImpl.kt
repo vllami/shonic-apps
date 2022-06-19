@@ -1,6 +1,5 @@
 package com.synrgy.data.login.repository
 
-import android.util.Log
 import com.hafidh.domain.common.WrapperResponse
 import com.hafidh.domain.login.LoginRepository
 import com.hafidh.domain.login.model.LoginDomain
@@ -24,8 +23,7 @@ class LoginRepositoryImpl @Inject constructor(private val service: LoginService)
             try {
                 val req = LoginReq(email, password)
                 val response = service.login(req)
-                Log.d("LoginRepositoryImpl", "response: $response")
-                if (response.token != null) {
+                if (response.status == 200) {
                     val mapper = loginDtoToDomain(response)
                     emit(WrapperResponse.Success(mapper))
                 } else {

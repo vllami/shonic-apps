@@ -75,7 +75,7 @@
         android:text="@string/error_login"
         android:textColor="#CB3A31"
         android:textSize="14sp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:drawableStartCompat="@drawable/ic_error_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

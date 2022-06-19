@@ -1,13 +1,16 @@
 package com.synrgy.data.di
 
+import android.content.Context
 import com.hafidh.domain.common.PreferenceProvider
 import com.synrgy.data.BuildConfig
 import com.synrgy.data.common.RequestInterceptor
+import com.synrgy.data.common.SharedPreferencesImpl
 import com.synrgy.data.login.service.LoginService
 import com.synrgy.data.signup.service.SignUpService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-@Module(includes = [LocalModule::class])
+@Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
     @Provides
@@ -32,20 +35,24 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(requestInterceptor: RequestInterceptor): OkHttpClient {
-        val okHttpClient = OkHttpClient.Builder()
-        val logging = HttpLoggingInterceptor()
-        okHttpClient.addInterceptor(requestInterceptor).also {
-            if (BuildConfig.DEBUG) {
-                logging.level = HttpLoggingInterceptor.Level.BODY
-                okHttpClient.addInterceptor(logging)
-            } else {
-                logging.level = HttpLoggingInterceptor.Level.NONE
-                okHttpClient.addInterceptor(logging)
+        return OkHttpClient.Builder().apply {
+            connectTimeout(60, TimeUnit.SECONDS)
+            readTimeout(60, TimeUnit.SECONDS)
+            writeTimeout(60, TimeUnit.SECONDS)
+            addInterceptor(requestInterceptor).also { client ->
+                if (BuildConfig.DEBUG){
+                    val logging = HttpLoggingInterceptor()
+                    logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+                    client.addInterceptor(logging)
+                }
             }
-        }
-        okHttpClient.connectTimeout(120, TimeUnit.SECONDS)
-        okHttpClient.readTimeout(120, TimeUnit.SECONDS)
-        return okHttpClient.build()
+        }.build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideSharedPreferences(@ApplicationContext context: Context): PreferenceProvider {
+        return SharedPreferencesImpl(context)
     }
 
     @Provides
@@ -65,7 +72,6 @@ object NetworkModule {
     fun provideLoginService(retrofit: Retrofit): LoginService {
         return retrofit.create(LoginService::class.java)
     }
-
 
 }
 

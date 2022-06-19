@@ -10,8 +10,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.hafidh.domain.common.Event
-import com.hafidh.domain.login.model.LoginDomain
 import com.synrgy.finalproject.R
 import com.synrgy.finalproject.databinding.ActivityLogInBinding
 import com.synrgy.finalproject.ui.auth.login.password.forgotpassword.ForgotPasswordActivity
@@ -55,22 +53,19 @@ class LogInActivity : AppCompatActivity() {
 
             viewModel.loginState.flowWithLifecycle(lifecycle).onEach {
                 when (it) {
-                    is Event.Loading -> {
+                    is LogInViewModel.LoginState.Init -> Unit
+                    is LogInViewModel.LoginState.Loading -> {
                         btnLogIn.isEnabled = false
                         pbLogin.visible()
                     }
-                    is Event.Success<LoginDomain> -> {
+                    is LogInViewModel.LoginState.Success -> {
                         pbLogin.gone()
                         btnLogIn.isEnabled = false
-                        Log.d("Login", "Success")
+                        Log.d("LoginActivity", "MASIH BINGGUNG MAU KEMANA WKWKWKWK")
                     }
-
-                    is Event.None -> Unit
-
-                    is Event.Error -> {
+                    is LogInViewModel.LoginState.Error -> {
                         btnLogIn.isEnabled = true
-                        pbLogin.gone()
-                        tvErrorLogin.visible()
+                        tvErrorLogin.gone()
                         tvErrorLogin.text = resources.getString(R.string.error_login)
                     }
                 }
@@ -102,10 +97,8 @@ class LogInActivity : AppCompatActivity() {
                 }
             }
 
-            btnLogIn.apply {
-                setOnClickListener {
-                    viewModel.login(etLogInEmail.text.toString(), etLogInPassword.text.toString())
-                }
+            btnLogIn.setOnClickListener {
+                viewModel.login(etLogInEmail.text.toString(), etLogInPassword.text.toString())
             }
         }
     }

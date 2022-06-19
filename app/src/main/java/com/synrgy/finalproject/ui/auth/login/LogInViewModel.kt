@@ -1,15 +1,16 @@
 package com.synrgy.finalproject.ui.auth.login
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hafidh.domain.common.Event
 import com.hafidh.domain.common.WrapperResponse
 import com.hafidh.domain.login.model.LoginDomain
 import com.hafidh.domain.login.usecase.LoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,38 +19,33 @@ class LogInViewModel @Inject constructor(
     private val useCase: LoginUseCase
 ) : ViewModel() {
 
-    private val _loginState = MutableStateFlow<Event<LoginDomain>>(Event.None)
+    private val _loginState = MutableStateFlow<LoginState>(LoginState.Init)
     val loginState = _loginState.asStateFlow()
-    fun login(email: String, password: String) {
-        Log.d("LogInViewModel", email)
-        Log.d("LogInViewModel", password)
-        viewModelScope.launch(Dispatchers.IO) {
-            useCase.login(email, password)
-                .onStart {
-                    _loginState.value = Event.Loading(true)
-                }.onCompletion {
-                    _loginState.value = Event.Loading(false)
-                }.catch {
-                    _loginState.value = Event.Loading(false)
-                    _loginState.value = Event.Error(it.stackTraceToString())
-                }.collect { result ->
-                    when (result) {
-                        is WrapperResponse.Success -> {
-                            _loginState.value = Event.Loading(false)
-                            result.data.token?.let { useCase.saveToken(it) }
-                            _loginState.value = Event.Success(result.data)
-                        }
-                        is WrapperResponse.Error -> {
-                            _loginState.value = Event.Loading(false)
-                            _loginState.value = Event.Error(result.exception)
-                        }
 
-                        is WrapperResponse.Empty -> {
-                            _loginState.value = Event.Loading(false)
-                            _loginState.value = Event.None
-                        }
+    fun login(email: String, password: String) {
+        viewModelScope.launch(Dispatchers.Main) {
+            useCase.login(email, password).onStart {
+                _loginState.value = LoginState.Loading
+            }.catch {
+                _loginState.value = LoginState.Error(it.stackTraceToString())
+            }.collect { result ->
+                when (result) {
+                    is WrapperResponse.Empty -> _loginState.value = LoginState.Loading
+                    is WrapperResponse.Error -> _loginState.value =
+                        LoginState.Error(result.exception)
+                    is WrapperResponse.Success -> {
+                        _loginState.value = LoginState.Success(result.data)
+                        useCase.saveToken(result.data.token)
                     }
                 }
+            }
         }
+    }
+
+    sealed class LoginState {
+        object Init : LoginState()
+        object Loading : LoginState()
+        data class Success(val user: LoginDomain) : LoginState()
+        data class Error(val error: String) : LoginState()
     }
 }
