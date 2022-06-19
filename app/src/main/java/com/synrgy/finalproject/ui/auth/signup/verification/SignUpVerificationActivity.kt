@@ -145,8 +145,6 @@ class SignUpVerificationActivity : AppCompatActivity() {
                         is SignUpViewModel.SignUpState.Error -> {
                             pbVerification.gone()
                             tvErrorVerificationCode.visible()
-                            tvErrorVerificationCode.text =
-                                resources.getString(R.string.sign_up_verification_error_code)
                         }
                         is SignUpViewModel.SignUpState.Success -> {
                             pbVerification.gone()
