@@ -1,7 +1,9 @@
-package com.synrgy.data.mapper
+package com.synrgy.data.common
 
+import com.hafidh.domain.login.model.LoginDomain
 import com.hafidh.domain.signup.model.CompleteSignUpDomain
 import com.hafidh.domain.signup.model.SignUpDomain
+import com.synrgy.data.login.dto.LoginResp
 import com.synrgy.data.signup.dto.CompleteSignUpResp
 import com.synrgy.data.signup.dto.SignUpResp
 
@@ -21,5 +23,12 @@ object DataMapper {
             }
         }
         return data ?: CompleteSignUpDomain(email = "", fullName = "")
+    }
+
+    fun loginDtoToDomain(loginResp: LoginResp): LoginDomain {
+        val data = loginResp.token?.let {
+            LoginDomain(token = it)
+        }
+        return data ?: LoginDomain(token = "")
     }
 }

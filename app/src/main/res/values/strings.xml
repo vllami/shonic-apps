@@ -63,5 +63,6 @@
     <string name="error_field_required">Nama lengkap atau password tidak boleh kosong</string>
     <string name="error_password_not_match">Password tidak sama</string>
     <string name="sign_up_success">Berhasil membuat akun silahkan login</string>
+    <string name="error_login">Email dan/atau password salah</string>
 
 </resources>

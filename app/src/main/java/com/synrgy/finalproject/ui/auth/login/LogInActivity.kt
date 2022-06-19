@@ -4,14 +4,25 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.util.Patterns
-import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import com.hafidh.domain.common.Event
+import com.hafidh.domain.login.model.LoginDomain
+import com.synrgy.finalproject.R
 import com.synrgy.finalproject.databinding.ActivityLogInBinding
 import com.synrgy.finalproject.ui.auth.login.password.forgotpassword.ForgotPasswordActivity
 import com.synrgy.finalproject.ui.auth.signup.SignUpActivity
+import com.synrgy.finalproject.utils.gone
+import com.synrgy.finalproject.utils.visible
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
+@AndroidEntryPoint
 class LogInActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLogInBinding
@@ -26,7 +37,8 @@ class LogInActivity : AppCompatActivity() {
                 val email = etLogInEmail.text.toString().trim()
                 val password = etLogInPassword.text.toString().trim()
 
-                btnLogIn.isEnabled = email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.isNotEmpty()
+                btnLogIn.isEnabled = email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email)
+                    .matches() && password.isNotEmpty()
             }
         }
 
@@ -41,10 +53,31 @@ class LogInActivity : AppCompatActivity() {
         with(binding) {
             setContentView(root)
 
+            viewModel.loginState.flowWithLifecycle(lifecycle).onEach {
+                when (it) {
+                    is Event.Loading -> {
+                        btnLogIn.isEnabled = false
+                        pbLogin.visible()
+                    }
+                    is Event.Success<LoginDomain> -> {
+                        pbLogin.gone()
+                        btnLogIn.isEnabled = false
+                        Log.d("Login", "Success")
+                    }
+
+                    is Event.None -> Unit
+
+                    is Event.Error -> {
+                        btnLogIn.isEnabled = true
+                        pbLogin.gone()
+                        tvErrorLogin.visible()
+                        tvErrorLogin.text = resources.getString(R.string.error_login)
+                    }
+                }
+            }.launchIn(lifecycleScope)
             llLogInBtnBack.setOnClickListener {
                 Intent(Intent.ACTION_MAIN).apply {
                     flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-
                     addCategory(Intent.CATEGORY_HOME)
                     startActivity(this)
                 }
@@ -53,7 +86,6 @@ class LogInActivity : AppCompatActivity() {
             tvLogInTextBtnSignUp.setOnClickListener {
                 Intent(this@LogInActivity, SignUpActivity::class.java).apply {
                     flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-
                     startActivity(this)
                 }
             }
@@ -62,14 +94,6 @@ class LogInActivity : AppCompatActivity() {
 
             etLogInPassword.apply {
                 addTextChangedListener(textWatcher)
-
-                setOnEditorActionListener { _, editorInfo, _ ->
-                    when (editorInfo) {
-                        EditorInfo.IME_ACTION_DONE -> clearFocus()
-                    }
-
-                    false
-                }
             }
 
             tvLogInBtnForgotPassword.setOnClickListener {
@@ -80,7 +104,7 @@ class LogInActivity : AppCompatActivity() {
 
             btnLogIn.apply {
                 setOnClickListener {
-
+                    viewModel.login(etLogInEmail.text.toString(), etLogInPassword.text.toString())
                 }
             }
         }

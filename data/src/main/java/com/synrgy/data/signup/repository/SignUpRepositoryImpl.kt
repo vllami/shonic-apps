@@ -4,14 +4,16 @@ import com.hafidh.domain.common.WrapperResponse
 import com.hafidh.domain.signup.SignUpRepository
 import com.hafidh.domain.signup.model.CompleteSignUpDomain
 import com.hafidh.domain.signup.model.SignUpDomain
-import com.synrgy.data.mapper.DataMapper.completeSignDtoToDomain
-import com.synrgy.data.mapper.DataMapper.signUpDataToDomain
+import com.synrgy.data.common.DataMapper.completeSignDtoToDomain
+import com.synrgy.data.common.DataMapper.signUpDataToDomain
 import com.synrgy.data.signup.dto.CheckEmailReq
 import com.synrgy.data.signup.dto.CompleteSignUpReq
 import com.synrgy.data.signup.dto.VerifyEmailReq
 import com.synrgy.data.signup.service.SignUpService
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -32,7 +34,7 @@ class SignUpRepositoryImpl @Inject constructor(private val signUpService: SignUp
             } catch (e: Exception) {
                 emit(WrapperResponse.Error(e.stackTraceToString()))
             }
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
     override suspend fun verifyEmail(email: String, otp: Int): Flow<WrapperResponse<SignUpDomain>> {
@@ -49,7 +51,7 @@ class SignUpRepositoryImpl @Inject constructor(private val signUpService: SignUp
             } catch (e: Exception) {
                 emit(WrapperResponse.Error(e.stackTraceToString()))
             }
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
     override suspend fun completeRegister(
@@ -70,6 +72,6 @@ class SignUpRepositoryImpl @Inject constructor(private val signUpService: SignUp
             } catch (e: Exception) {
                 emit(WrapperResponse.Error(e.stackTraceToString()))
             }
-        }
+        }.flowOn(Dispatchers.IO)
     }
 }

@@ -63,6 +63,21 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.appcompat.widget.Toolbar>
 
+    <TextView
+        android:id="@+id/tv_error_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:drawablePadding="8dp"
+        android:visibility="gone"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#CB3A31"
+        android:background="@drawable/combine_color"
+        app:drawableStartCompat="@drawable/ic_error_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_log_in" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_log_in_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -82,7 +97,7 @@
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_log_in">
+        app:layout_constraintTop_toBottomOf="@+id/tv_error_login">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_log_in_email"
@@ -227,5 +242,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="RtlSymmetry" />
+
+    <ProgressBar
+        android:id="@+id/pb_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
