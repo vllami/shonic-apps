@@ -39,6 +39,8 @@ class ForgotPasswordActivity : AppCompatActivity() {
         with(binding) {
             setContentView(root)
 
+
+
             llForgotPasswordBtnBack.setOnClickListener {
                 onBackPressed()
             }
