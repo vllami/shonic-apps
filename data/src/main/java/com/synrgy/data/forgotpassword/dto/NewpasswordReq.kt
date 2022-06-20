@@ -5,9 +5,11 @@ import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
 
 @Keep
-data class ValidateOtp(
+data class NewpasswordReq(
     @SerializedName("email")
     val email: String?,
-    @SerializedName("otp")
-    val otp: Int?
+    @SerializedName("newPassword")
+    val newPassword: String?,
+    @SerializedName("token")
+    val token: String?
 )

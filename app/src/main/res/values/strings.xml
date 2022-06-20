@@ -64,5 +64,6 @@
     <string name="error_password_not_match">Password tidak sama</string>
     <string name="sign_up_success">Berhasil membuat akun silahkan login</string>
     <string name="error_login">Email dan/atau password anda salah</string>
+    <string name="error_ubah_password">Tidak ada akun dengan email tersebut</string>
 
 </resources>

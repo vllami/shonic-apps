@@ -31,4 +31,5 @@ object DataMapper {
         }
         return data ?: LoginDomain(token = "")
     }
+
 }

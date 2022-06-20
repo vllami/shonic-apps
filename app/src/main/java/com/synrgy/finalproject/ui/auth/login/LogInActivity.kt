@@ -65,7 +65,8 @@ class LogInActivity : AppCompatActivity() {
                     }
                     is LogInViewModel.LoginState.Error -> {
                         btnLogIn.isEnabled = true
-                        tvErrorLogin.gone()
+                        tvErrorLogin.visible()
+                        pbLogin.gone()
                         tvErrorLogin.text = resources.getString(R.string.error_login)
                     }
                 }

@@ -9,4 +9,6 @@ object Constants {
 
     const val DUMMY_EMAIL = "shonic@gmail.com"
 
+    const val EXTRA_EMAIL_FORGOT_PASSWORD = "extra_email_forgot_password"
+
 }

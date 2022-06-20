@@ -27,7 +27,7 @@ class LoginRepositoryImpl @Inject constructor(private val service: LoginService)
                     val mapper = loginDtoToDomain(response)
                     emit(WrapperResponse.Success(mapper))
                 } else {
-                    emit(WrapperResponse.Empty)
+                    emit(WrapperResponse.Error(response.message ?: "Error"))
                 }
 
             } catch (e: Exception) {

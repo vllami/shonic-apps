@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:drawablePadding="8dp"
-        android:visibility="visible"
+        android:visibility="gone"
         android:paddingStart="16dp"
         android:text="@string/sign_up_verification_error_code"
         android:paddingTop="12dp"

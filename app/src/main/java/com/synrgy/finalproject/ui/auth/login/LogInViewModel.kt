@@ -25,15 +25,18 @@ class LogInViewModel @Inject constructor(
     fun login(email: String, password: String) {
         viewModelScope.launch(Dispatchers.Main) {
             useCase.login(email, password).onStart {
-                _loginState.value = LoginState.Loading
+                _loginState.value = LoginState.Loading(true)
             }.catch {
                 _loginState.value = LoginState.Error(it.stackTraceToString())
             }.collect { result ->
                 when (result) {
-                    is WrapperResponse.Empty -> _loginState.value = LoginState.Loading
-                    is WrapperResponse.Error -> _loginState.value =
-                        LoginState.Error(result.exception)
+                    is WrapperResponse.Empty -> Unit
+                    is WrapperResponse.Error -> {
+                        _loginState.value = LoginState.Loading(false)
+                        _loginState.value = LoginState.Error(result.exception)
+                    }
                     is WrapperResponse.Success -> {
+                        _loginState.value = LoginState.Loading(false)
                         _loginState.value = LoginState.Success(result.data)
                         useCase.saveToken(result.data.token)
                     }
@@ -44,7 +47,7 @@ class LogInViewModel @Inject constructor(
 
     sealed class LoginState {
         object Init : LoginState()
-        object Loading : LoginState()
+        data class Loading(val isloading: Boolean) : LoginState()
         data class Success(val user: LoginDomain) : LoginState()
         data class Error(val error: String) : LoginState()
     }

@@ -5,6 +5,7 @@ import com.hafidh.domain.common.PreferenceProvider
 import com.synrgy.data.BuildConfig
 import com.synrgy.data.common.RequestInterceptor
 import com.synrgy.data.common.SharedPreferencesImpl
+import com.synrgy.data.forgotpassword.service.ForgotPasswordService
 import com.synrgy.data.login.service.LoginService
 import com.synrgy.data.signup.service.SignUpService
 import dagger.Module
@@ -71,6 +72,12 @@ object NetworkModule {
     @Singleton
     fun provideLoginService(retrofit: Retrofit): LoginService {
         return retrofit.create(LoginService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideForgotPasswordService(retrofit: Retrofit): ForgotPasswordService {
+        return retrofit.create(ForgotPasswordService::class.java)
     }
 
 }
