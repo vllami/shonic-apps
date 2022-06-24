@@ -3,6 +3,7 @@ package com.synrgy.data.forgotpassword.repository
 import com.hafidh.domain.common.WrapperResponse
 import com.hafidh.domain.forgotpassword.ForgotPasswordRepository
 import com.hafidh.domain.forgotpassword.model.ForgotPasswordDomain
+import com.synrgy.data.forgotpassword.dto.ForgotPasswordReq
 import com.synrgy.data.forgotpassword.dto.NewpasswordReq
 import com.synrgy.data.forgotpassword.dto.ValidateOtpReq
 import com.synrgy.data.forgotpassword.service.ForgotPasswordService
@@ -14,10 +15,11 @@ import javax.inject.Inject
 
 class ForgotPasswordImpl @Inject constructor(private val service: ForgotPasswordService) :
     ForgotPasswordRepository {
-    override suspend fun sendEmailRequest(email: String): Flow<WrapperResponse<ForgotPasswordDomain>> {
+    override suspend fun sendEmailRequest(email:String): Flow<WrapperResponse<ForgotPasswordDomain>> {
         return flow {
             try {
-                val response = service.sendForgotPasswordEmail(email)
+                val req = ForgotPasswordReq(email)
+                val response = service.sendForgotPasswordEmail(req)
                 when (response.status) {
                     400 -> {
                         emit(WrapperResponse.Error(response.message ?: "Error"))

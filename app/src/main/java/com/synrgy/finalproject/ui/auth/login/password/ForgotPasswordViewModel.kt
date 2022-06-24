@@ -55,8 +55,6 @@ class ForgotPasswordViewModel @Inject constructor(private val useCase: ForgotPas
                 }.catch { exception ->
                     _stateValidate.value = Event.Loading(false)
                     _stateValidate.value = Event.Error(exception.stackTraceToString())
-                }.onCompletion {
-                    _stateValidate.value = Event.Loading(false)
                 }.collect { result ->
                     when (result) {
                         is WrapperResponse.Success -> {

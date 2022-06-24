@@ -19,6 +19,7 @@ import com.synrgy.finalproject.R
 import com.synrgy.finalproject.databinding.ActivityForgotPasswordBinding
 import com.synrgy.finalproject.ui.auth.login.password.ForgotPasswordViewModel
 import com.synrgy.finalproject.ui.auth.login.password.forgotpassword.verification.ForgotPasswordVerificationActivity
+import com.synrgy.finalproject.utils.Constants.EXTRA_EMAIL_FORGOT_PASSWORD
 import com.synrgy.finalproject.utils.gone
 import com.synrgy.finalproject.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
@@ -73,7 +74,12 @@ class ForgotPasswordActivity : AppCompatActivity() {
                                     it, Snackbar.LENGTH_LONG
                                 ).show()
                             }
-                            startActivity(Intent(this@ForgotPasswordActivity, ForgotPasswordVerificationActivity::class.java))
+                            Intent(this@ForgotPasswordActivity, ForgotPasswordVerificationActivity::class.java)
+                                .also {
+                                    it.putExtra(EXTRA_EMAIL_FORGOT_PASSWORD, etForgotPasswordEmail.text.toString())
+                                    startActivity(it)
+                                    finish()
+                                }
                         }
 
                     }
